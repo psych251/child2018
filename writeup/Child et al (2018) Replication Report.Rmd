@@ -1,0 +1,117 @@
+---
+title: "Replication of Experiment 1 by Child, Oakhill, & Garnham (2018, Language, Cognition and Neuroscience)"
+author: "Madison Bunderson (mebund@stanford.edu)"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: false
+---
+
+<!-- Replication reports should all use this template to standardize reporting across projects.  These reports will be public supplementary materials that accompany the summary report(s) of the aggregate results. -->
+
+## Introduction
+
+### Experiment Overview and Choice Justification
+
+In Experiment 1 of the manuscript "You're the emotional one: the role of perspective for emotion processing in reading comprehension", Child, Oakhill, & Garnham (2018) manipulated the perspective (personal versus onlooker) and overall valence (positive versus negative) of short text passages to investigate the potential effects on a reader's speed and emotional response. Overall, the researchers found that participants read more quickly in the personal perspective condition. Addditionally, they found that in the positively valenced condition, personal perspective induced faster reading per sentence and more positive feelings after reading. In the negatively valenced condition, there were no evident effects of perspective on reading speed or emotional response. I aim to replicate these findings in the current project. 
+
+I selected this study because the influence of perspective on the reading experience is one that relates to my own future research within the science of reading, as I intend to examine processing of text and its relation to engagement and comprehension. I am particularly intrigued by the idea of text manipulation as a tool to influence reader behavior, given it may hold implications for educational practice. 
+
+### Required Stimuli and Expected Procedures
+
+Participants were recruited utilizing Amazon's Mechanical Turk (MTurk), an online crowdsourcing platform. All participants were compensated for their time.
+
+Following an introduction and three practice trials, participants were shown 48 randomized passages that varied in length from 5 to 9 sentences. Each passage was presented sentence-by-sentence, and the amount of time that it took for the participant to read each sentence was recorded. 24 of the total passages were experimentally manipulated passages, provided by the original authors in their [supplemental material](https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Supplemental.pdf); the passages were counterbalanced for perspective (personal versus onlooker), valence (positive versus negative), and character gender. The other 24 passages were distractor passages, written in third or first person with the intention of concealing the purpose of the experiment. All text was presented with identical font size and color (black) on a white background. Following the presentation of the final sentence of each passage, participants responded with a rating of their current emotional state on a scale of 1 (negative) to 10 (positive). Two-second breaks were given between emotional response ratings and the presentation of the first sentence of the next passage.
+
+### Anticipated Challenges
+
+I believe my primary challenge will be the programming of the experiment due to the number of passage stimuli, the fact that they are presented sentence-by-sentence, and the need to collect reaction time data. I do not have previous experience with Javascript, having primarily used tools like Qualtrics and E-prime in the past. Qualtrics does have a timing feature that could be applied to this paradigm, but I'm unsure if its sensitivity is appropriate for the current task. Furthermore, I am also new to utilizing the tidyverse for data work, and therefore expect that there will be a learning curve during my analyses. Lastly--although I hope that this will not present a challenge--I will need to obtain the 24 distractor passages described above as they are not included in the supplemental material.
+
+### Related Links
+
+The GitHub project repository for this replication can be found [here.](https://github.com/psych251/child2018)
+
+The original paper being replicated can be found [here.](https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018.pdf)
+
+<!-- This is the end of the introduction section. -->
+
+## Methods
+
+### Power Analysis
+
+Original effect size, power analysis for samples to achieve 80%, 90%, 95% power to detect that effect size.  Considerations of feasibility for selecting planned sample size.
+
+### Planned Sample
+
+Planned sample size and/or termination rule, sampling frame, known demographics if any, preselection rules if any.
+
+### Materials
+
+All materials - can quote directly from original article - just put the text in quotations and note that this was followed precisely.  Or, quote directly and just point out exceptions to what was described in the original article.
+
+### Procedure	
+
+Can quote directly from original article - just put the text in quotations and note that this was followed precisely.  Or, quote directly and just point out exceptions to what was described in the original article.
+
+### Analysis Plan
+
+Can also quote directly, though it is less often spelled out effectively for an analysis strategy section.  The key is to report an analysis strategy that is as close to the original - data cleaning rules, data exclusion rules, covariates, etc. - as possible.  
+
+**Clarify key analysis of interest here**  You can also pre-specify additional analyses you plan to do.
+
+### Differences from Original Study
+
+Explicitly describe known differences in sample, setting, procedure, and analysis plan from original study.  The goal, of course, is to minimize those differences, but differences will inevitably occur.  Also, note whether such differences are anticipated to make a difference based on claims in the original article or subsequent published research on the conditions for obtaining the effect.
+
+### Methods Addendum (Post Data Collection)
+
+You can comment this section out prior to final report with data collection.
+
+#### Actual Sample
+  Sample size, demographics, data exclusions based on rules spelled out in analysis plan
+
+#### Differences from pre-data collection methods plan
+  Any differences from what was described as the original plan, or “none”.
+
+
+## Results
+
+
+### Data preparation
+
+Data preparation following the analysis plan.
+	
+```{r include=F}
+###Data Preparation
+
+####Load Relevant Libraries and Functions
+
+####Import data
+
+#### Data exclusion / filtering
+
+#### Prepare data for analysis - create columns etc.
+```
+
+### Confirmatory analysis
+
+The analyses as specified in the analysis plan.  
+
+*Side-by-side graph with original graph is ideal here*
+
+### Exploratory analyses
+
+Any follow-up analyses desired (not required).  
+
+## Discussion
+
+### Summary of Replication Attempt
+
+Open the discussion section with a paragraph summarizing the primary result from the confirmatory analysis and the assessment of whether it replicated, partially replicated, or failed to replicate the original result.  
+
+### Commentary
+
+Add open-ended commentary (if any) reflecting (a) insights from follow-up exploratory analysis, (b) assessment of the meaning of the replication (or not) - e.g., for a failure to replicate, are the differences between original and present study ones that definitely, plausibly, or are unlikely to have been moderators of the result, and (c) discussion of any objections or challenges raised by the current and original authors about the replication attempt.  None of these need to be long.
