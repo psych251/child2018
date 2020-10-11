@@ -42,29 +42,60 @@ The original paper being replicated can be found [here.](https://github.com/psyc
 
 ### Power Analysis
 
-Original effect size, power analysis for samples to achieve 80%, 90%, 95% power to detect that effect size.  Considerations of feasibility for selecting planned sample size.
+Original effect size, power analysis for samples to achieve 80%, 90%, 95% power to detect that effect size.  Considerations of feasibility for selecting planned sample size. Note that this will be completed later (after 10/11/20) as it has yet to be covered in class.
 
 ### Planned Sample
 
-Planned sample size and/or termination rule, sampling frame, known demographics if any, preselection rules if any.
+The original experiment's participants were 36 native speakers of English with an age range of 18 to 33 years. Participants with reading disorders were excluded.
+
+In line with the original study, the current study will aim to collect data from approximately 40 participants (**note**: this may be adjusted based off of power analysis discussions; this will be revisited after 10/11/20). This sample size may be modified if budgeting constraints arise as connected to other projects within the course; should these constraints arise, the planned sample will be re-calculated and modified accordingly *prior* to the collection of any experimental data. Participants will be limited in order to include only native speakers of English and those without a diagnosed reading disorder. These exclusions will be listed in the description of the task on MTurk. Additionally, screening questions will be built into the survey on Qualtrics such that if someone indicates that they are not a native English speaker and/or have been diagnosed with a reading disorder, the survey will then terminate. 
 
 ### Materials
 
-All materials - can quote directly from original article - just put the text in quotations and note that this was followed precisely.  Or, quote directly and just point out exceptions to what was described in the original article.
+The original experiment utilized 48 novel passages of 5-9 sentences, counterbalanced to account for valence, perspective, and gender (in the third-person perspective passages). Each passage ended with an explicit emotion word that matched the content of the earlier sentences in each passage. These passages were provided in the [supplemental material](https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Supplemental.pdf) of the original paper. To further detail the composition of these materials, there were:
+
+a. 24 passages written in the second-person perspective (12 of which were positively-valenced and 12 of which were negatively-valenced),
+b. 12 passages written in the third-person perspective featuring a female character (6 of which were positively-valenced and 6 of which were negatively-valenced), and 
+c. 12 passages written in the third-person perspective featuring a male character (6 of which were positively-valenced and 6 of which were negatively-valenced). 
+
+It is of note that there were only 24 novel situations across passage stimuli, such that second-person and third-person perspectives were written about the same scenario but with modified language. 
+
+Additionally, participants were presented with 24 [distractor (also referred to as filler) passages](https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Supplemental_Filler.pdf) to help disguise the purpose of the experiment. Filler passages were comprised of passages of similar length as the experimental passages, and utilized a mixture of first-person and third-person perspective. Another noted difference is that "in contrast to the experimental items, the final sentence of the fillers did not contain an explicit emotion and the texts were therefore more ambiguous" (Child, Oakhill, & Garnham, 2018).
+
+These passages were utilized in the current replication in mostly original form, with small changes made to spelling to accommodate for linguistic differences between British English and American English. One such example is the changing of 'pay-cheque' to 'paycheck'. 
+
+Additional materials that are currently being sought out from the original authors are the instructions and practice trials, as well as the exact wording of the question that asked participants to self-rate their current emotional state. As of 10/11/20, these materials have not been obtained. Should they not become available, the current replication will attempt to create the instructions, practice trials, and emotion self-rating question in a way that is most authentic to the details provided in the original experiment's manuscript.
 
 ### Procedure	
 
-Can quote directly from original article - just put the text in quotations and note that this was followed precisely.  Or, quote directly and just point out exceptions to what was described in the original article.
+In the original experiment,
+
+> "[a]fter an introduction and three practice trials, the main text passages were presented sentence-by-sentence. After having read the final sentence, participants typed in their self-rating i.e. the number rating their own emotion. After the response, the next trial began following a two second break" (Child, Oakhill, & Garnham, 2018). 
+
+The 48 total passages were presented in random order for every participant, with counterbalancing for perspective, valence and gender of character. Reaction time was collected on a sentence-by-sentence basis. The experiment was originally presented utilizing E-Prime software. Appearance-wise, it is of note that the text was presented on a white background with a size 24 black font. 
+
+The above procedure of the original experiment was followed very closely. There were two procedural deviations: 
+
+1. The participant clicked on the number to rate their own emotion, rather than typing it in on their own keyboard, and
+2. The experiment was implemented using Qualtrics rather than E-prime, as previously mentioned.
+
+Upon its completion, the Qualtrics paradigm will be linked [here](TBD). 
 
 ### Analysis Plan
 
-Can also quote directly, though it is less often spelled out effectively for an analysis strategy section.  The key is to report an analysis strategy that is as close to the original - data cleaning rules, data exclusion rules, covariates, etc. - as possible.  
+As in the original article, reading time data will be analyzed on a sentence-by-sentence basis (rather than collated per passage). To clean the data, filler passages must first be removed from the data. Then, outliers above or below 2.5 standard deviations of the mean reading times per sentence will be removed on a per-participant basis. Means will then be recalculated using the remaining items. A natural log transformation will then be used to normalize the reaction time data (unless data presents normally); length effects will then be controlled for from participant-to-participant by regressing reading times against the number of characters per sentence. 
 
-**Clarify key analysis of interest here**  You can also pre-specify additional analyses you plan to do.
+**The key analysis of interest** for the current replication (as was done in the original paper) is a linear mixed effects (LME) model, repeated for reading times and then emotion ratings. For examining both outcomes of interest, perspective and valence were included as fixed-effects, with participants and items as random intercepts. In the original analysis, random slopes were not included in either model due to low scores on the Akaike Information Criterion (AIC); this will also be followed in the replication.
+
+No additional analyses are pre-planned.
 
 ### Differences from Original Study
 
-Explicitly describe known differences in sample, setting, procedure, and analysis plan from original study.  The goal, of course, is to minimize those differences, but differences will inevitably occur.  Also, note whether such differences are anticipated to make a difference based on claims in the original article or subsequent published research on the conditions for obtaining the effect.
+Differences between the original study and the current study have been minimized, but those present are summarized below:
+
+The participant sample will differ in that it will be collected online through MTurk utilizing a Qualtrics survey, rather than in-person utilizing E-prime software. Despite this change, the experimental design of the original setup is completely replicable using the Qualtrics software. Reaction time data and emotional ratings will still be obtained as they were in the original design, and clicking (rather than typing) the emotional rating will not have any impact as reaction time during emotion rating is irrelevant to the aims of the study. One concern of note is that reaction time data is sensitive to participant distraction, and external distraction is arguably more present when a survey is completed in a participant's personal setting rather than in a laboratory. However, extended reaction times due to distraction will likely be addressed utilizing the cleaning method detailed in the analysis plan, so the impact of this difference is expected to be minimized.
+
+Furthermore, the sample will be drawn from a pool of American participants, rather than British participants. As the author makes claims regarding readers in general, rather than readers in the United Kingdom alone, this should not impact the claims of the paper; however, this is recognized as a limitation. To accommodate the difference in geographic location, passage stimuli were modified to change British English spellings to American English spellings. This change was made to reduce any distraction that may have been caused by the less commonly encountered spelling; however, it does not impact the meaning of the word, nor does it change the key elements of the passage (the perspective or emotion). Therefore this difference is not expected to impact the claims made by the original paper.
 
 ### Methods Addendum (Post Data Collection)
 
@@ -82,9 +113,24 @@ You can comment this section out prior to final report with data collection.
 
 ### Data preparation
 
-Data preparation following the analysis plan.
-	
+Raw data was cleaned to remove additional columns collected by Qualtrics that were unnecessary for analyses, as well as the filler passages (denoted with the "FILLER" tag in the column heading). Means were calculated for reading time per sentence, and any sentence that had a reaction time above or below 2 standard deviations of the mean was excluded. Means were then recalculated following these exclusions. A natural log transformation was performed to normalize the data, and length effects were controlled for by regressing each sentence's reading time against the number of characters in that sentence. Two additional columns were then created; one to represent the perspective condition (second-person versus third person) and one to represent the valence condition (positive versus negative).
+
+Some notes for interpreting the raw data column headings:
+
+a. '2p' stands for second-person perspective.
+b. '3pF' stands for third-person perspective with a female character.
+c. '3pM' stands for third-person perspective with a male character.
+d. 'P' and 'N', followed by a number, indicate the valence and scenario number. 
+e. 'RT' stands for reaction or reading time, and is preceded by a number indicating sentence.
+f. 'ER' stands for emotion self-rating.
+
+*In accordance with the above notes, column titles were represented in three part annotations structured with the perspective, valence and scenario, and value indicator (for either sentence reaction time or emotion rating). One example is '2p-P1-1RT', meaning that the passage was written in second-person about the first positive scenario, and that the value logged in that column is the reaction time for the first sentence. Another example is '3pF-N5-ER', indicating that the passage was written in third-person perspective (with a female character) about the fifth negative scenario, and that the value logged in that column is the emotion rating for that passage.* 
+
+The above data preparation process is presented in code below.
+
 ```{r include=F}
+##TBD after piloting
+
 ###Data Preparation
 
 ####Load Relevant Libraries and Functions
@@ -98,7 +144,18 @@ Data preparation following the analysis plan.
 
 ### Confirmatory analysis
 
-The analyses as specified in the analysis plan.  
+As specified in the analysis plan, two linear mixed effects (LME) models were run; one for reading times, and one for emotion ratings. For both models, perspective and valence were included as fixed-effects, and participants and items were included as random intercepts. The original tables are presented below as Table 1 and Table 2 from Child, Oakhill, & Garnham (2018); the reading times LME model is on the left, and the self-ratings of emotions LME model is on the right.
+
+```{r}
+knitr::include_graphics("https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Table1and2.png?raw=true")
+```
+
+Below are the tables created in the replication project; the reading times LME model is on the left, and the self-ratings of emotion LME is on the right.
+
+```{r}
+###TBD
+```
+
 
 *Side-by-side graph with original graph is ideal here*
 
