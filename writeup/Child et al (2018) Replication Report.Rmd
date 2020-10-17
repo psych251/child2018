@@ -16,7 +16,7 @@ output:
 
 ### Experiment Overview and Choice Justification
 
-In Experiment 1 of the manuscript "You're the emotional one: the role of perspective for emotion processing in reading comprehension", Child, Oakhill, & Garnham (2018) manipulated the perspective (personal versus onlooker) and overall valence (positive versus negative) of short text passages to investigate the potential effects on a reader's speed and emotional response. Overall, the researchers found that participants read more quickly in the personal perspective condition. Addditionally, they found that in the positively valenced condition, personal perspective induced faster reading per sentence and more positive feelings after reading. In the negatively valenced condition, there were no evident effects of perspective on reading speed or emotional response. I aim to replicate these findings in the current project. 
+In Experiment 1 of the manuscript "You're the emotional one: the role of perspective for emotion processing in reading comprehension", Child, Oakhill, & Garnham (2018) manipulated the perspective (personal versus onlooker) and overall valence (positive versus negative) of short text passages to investigate the potential effects on a reader's speed and emotional response. Overall, the researchers found that participants read more quickly in the personal perspective condition. Additionally, they found that in the positively valenced condition, personal perspective induced faster reading per sentence and more positive feelings after reading. In the negatively valenced condition, there were no evident effects of perspective on reading speed or emotional response. I aim to replicate these findings in the current project. 
 
 I selected this study because the influence of perspective on the reading experience is one that relates to my own future research within the science of reading, as I intend to examine processing of text and its relation to engagement and comprehension. I am particularly intrigued by the idea of text manipulation as a tool to influence reader behavior, given it may hold implications for educational practice. 
 
@@ -64,7 +64,7 @@ Additionally, participants were presented with 24 [distractor (also referred to 
 
 These passages were utilized in the current replication in mostly original form, with small changes made to spelling to accommodate for linguistic differences between British English and American English. One such example is the changing of 'pay-cheque' to 'paycheck'. 
 
-Additional materials that are currently being sought out from the original authors are the instructions and practice trials, as well as the exact wording of the question that asked participants to self-rate their current emotional state. As of 10/11/20, these materials have not been obtained. Should they not become available, the current replication will attempt to create the instructions, practice trials, and emotion self-rating question in a way that is most authentic to the details provided in the original experiment's manuscript.
+Additional materials that were sought out from the original authors were the instructions and practice trials, as well as the exact wording of the question that asked participants to self-rate their current emotional state. The first author did not respond to provide these materials, and the other authors were not able to access them. Thus, the current replication attempted to create the instructions, practice trials, and emotion self-rating question in a way that was most authentic to the details provided in the original experiment's manuscript.
 
 ### Procedure	
 
@@ -79,7 +79,7 @@ The above procedure of the original experiment was followed very closely. There 
 1. The participant clicked on the number to rate their own emotion, rather than typing it in on their own keyboard, and
 2. The experiment was implemented using Qualtrics rather than E-prime, as previously mentioned.
 
-Upon its completion, the Qualtrics paradigm will be linked [here](TBD). 
+The completed Qualtrics paradigm is linked [here](https://stanforduniversity.qualtrics.com/jfe/form/SV_9sLrDIEvPE0mXel). Please note that this link is to the pilot survey, rather than the actual implemented survey, to prevent erroneous data collection. There were no differences between this pilot and the final implemented experiment. 
 
 ### Analysis Plan
 
@@ -96,6 +96,8 @@ Differences between the original study and the current study have been minimized
 The participant sample will differ in that it will be collected online through MTurk utilizing a Qualtrics survey, rather than in-person utilizing E-prime software. Despite this change, the experimental design of the original setup is completely replicable using the Qualtrics software. Reaction time data and emotional ratings will still be obtained as they were in the original design, and clicking (rather than typing) the emotional rating will not have any impact as reaction time during emotion rating is irrelevant to the aims of the study. One concern of note is that reaction time data is sensitive to participant distraction, and external distraction is arguably more present when a survey is completed in a participant's personal setting rather than in a laboratory. However, extended reaction times due to distraction will likely be addressed utilizing the cleaning method detailed in the analysis plan, so the impact of this difference is expected to be minimized.
 
 Furthermore, the sample will be drawn from a pool of American participants, rather than British participants. As the author makes claims regarding readers in general, rather than readers in the United Kingdom alone, this should not impact the claims of the paper; however, this is recognized as a limitation. To accommodate the difference in geographic location, passage stimuli were modified to change British English spellings to American English spellings. This change was made to reduce any distraction that may have been caused by the less commonly encountered spelling; however, it does not impact the meaning of the word, nor does it change the key elements of the passage (the perspective or emotion). Therefore this difference is not expected to impact the claims made by the original paper.
+
+Lastly, the first author did not respond to communications and only the filler passages were able to be obtained from the senior author. Because of his, the instructions, practice trials, and wording of the emotion self-rating question were all generated anew for the current replication. Feedback was obtained during piloting to ensure that the instructions and practice trials prepared participants for the task; however, it is impossible to know whether changes in wording here or in the emotion self-rating question will impact results. Although each material has been re-created in order to best achieve its original aim, there is a possibility that the wording of the emotion self-rating question may impact response, and thus impact the replication of the second model of this paper.
 
 ### Methods Addendum (Post Data Collection)
 
