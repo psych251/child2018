@@ -144,7 +144,7 @@ library(lme4)
 
 ####Import data from Qualtrics and Excel (Character Count Info)
 
-child2018rep_data_link <- getURL("https://raw.githubusercontent.com/psych251/child2018/b8e168688bd165ae479d5c440ec6962d51921b60/data/psych251_child2018_pilotA.csv")
+child2018rep_data_link <- getURL("https://raw.githubusercontent.com/psych251/child2018/master/data/psych251_child2018_anonymized_pilotA.csv")
 child2018rep_data <- read.csv(text = child2018rep_data_link)
 
 child2018rep_charcount_link <- getURL("https://raw.githubusercontent.com/psych251/child2018/master/data/Child_Oakhill_Garnham_2018_Sentence_CharacterCount.csv")
@@ -155,7 +155,7 @@ child2018rep_charcount <- read.csv(text = child2018rep_charcount_link)
 filtered_data = child2018rep_data %>%
   filter(StartDate!="Start Date" & EndDate != '{"ImportId":"endDate","timeZone":"America/Denver"}') %>%
   filter(D2.NATIVE.ENGLISH==1 & D3.READING.DISORDER==2) %>%
-  select(-c("StartDate", "EndDate", "Status", "IPAddress", "Progress", "Finished", "RecordedDate", "ResponseId", "RecipientLastName", "RecipientFirstName", "RecipientEmail", "ExternalReference", "LocationLatitude", "LocationLongitude", "DistributionChannel", "UserLanguage", "Duration..in.seconds.", "D2.NATIVE.ENGLISH", "D3.READING.DISORDER"),
+  select(-c("StartDate", "EndDate", "Status", "Progress", "Finished", "RecordedDate", "ResponseId", "DistributionChannel", "UserLanguage", "Duration..in.seconds.", "D2.NATIVE.ENGLISH", "D3.READING.DISORDER"),
          -starts_with("FILLER"),
          -starts_with("PRACTICE"),
          -contains("First.Click"),
