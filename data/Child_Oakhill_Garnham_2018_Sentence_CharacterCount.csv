@@ -1,0 +1,259 @@
+Passage,Passage_Text,Character_Count
+2p.N1.1RT,It is early in the morning.,27
+2p.N1.2RT,The alarm clock rings relentlessly.,35
+2p.N1.3RT,"You have had a rough night again, waking up several times.",58
+2p.N1.4RT,Grumbling you make your way to the bathroom and take a look at yourself in the mirror.,86
+2p.N1.5RT,Bags under your eyes reflect the fact that you haven’t slept normally for days.,79
+2p.N1.6RT,The thought of going to work today makes you feel exhausted.,60
+2p.N2.1RT,You have not been out of the house for quite a while.,53
+2p.N2.2RT,There is no one around to meet and you do not have any idea what to do with the day.,84
+2p.N2.3RT,You look at some pictures of some friends and some nice times.,62
+2p.N2.4RT,"You look around the room, which seems now more empty and bigger than usual.",75
+2p.N2.5RT,Looking at the pictures makes you feel more lonelier.,53
+2p.N3.1RT,"With a short scream, you wake up.",33
+2p.N3.2RT,It has been a long time since you last remembered a dream.,58
+2p.N3.3RT,You feel the cold sweat on your forehead.,41
+2p.N3.4RT,You had been trying to fight a dark creature but suddenly a chase began and you had nowhere to go.,98
+2p.N3.5RT,The last thing you can remember is the fall into complete darkness.,67
+2p.N3.6RT,Thinking about the dream leaves you troubled.,45
+2p.N4.1RT,You just want to forget this day!,33
+2p.N4.2RT,You cannot believe that all the people in the city have seen you running around like a moron.,93
+2p.N4.3RT,"Even worse, it had to be your colleague telling you that you should check what was stuck on your back.",102
+2p.N4.4RT,You really do not want to go to work tomorrow.,46
+2p.N4.5RT,The situation couldn’t have been more embarrassing for you. ,60
+2p.N5.1RT,You cannot believe that it is happening again.,46
+2p.N5.2RT,Only last week you had trouble finding the keys. ,49
+2p.N5.3RT,"Today you have already been searching for two hours, but still no sign of them.",79
+2p.N5.4RT,You were sure you left them in their usual spot.,48
+2p.N5.5RT,"Not having found anything, you feel frustrated.",47
+2p.N6.1RT,You have never read a book that,31
+2p.N6.2RT,"From the beginning, you could not put it down, because you empathize with the main character.",93
+2p.N6.3RT,You have been enjoying every minute of reading and shared every thrill described by the author. ,96
+2p.N6.4RT,"However, the death of the main character at the end was not only a surprise, but a disaster.",92
+2p.N6.5RT,"After having closed the book, you feel miserable.",49
+2p.N7.1RT,"When you opened the fridge today, a very unusual smell filled the room.",71
+2p.N7.2RT,"After some inspection, you find a piece of moldy cheese at the back of the lowest level.",88
+2p.N7.3RT,"It is unbelievable, as it must have been lying there for more than a month.",75
+2p.N7.4RT,The smell and the look make you feel disgusted by the prospect of lunch. ,73
+2p.N8.1RT,Yesterday you got some really bad news.,39
+2p.N8.2RT,You still cannot believe that someone you know was involved in the accident that was reported on the radio.,107
+2p.N8.3RT,The news of her death hits you hard and you have to sit down.,61
+2p.N8.4RT,You are feeling paralyzed by grief.,35
+2p.N9.1RT,The pain was just too intense.,30
+2p.N9.2RT,First you thought that you could ignore it but now you are not able to concentrate on anything else.,100
+2p.N9.3RT,"The headache started early in the morning and just would not go away, despite painkillers.",90
+2p.N9.4RT,You feel it getting worse every minute.,39
+2p.N9.5RT,You are desperate and consider going home. ,43
+2p.N10.1RT,You cannot wait to hear the final results. ,43
+2p.N10.2RT,Nothing can put your mind at ease.,34
+2p.N10.3RT,The time just refuses to pass by. ,34
+2p.N10.4RT,You were told you would get notified by the end of this afternoon and the clock is already approaching 5pm.,107
+2p.N10.5RT,You are getting more and more nervous and it is too hard to keep sitting still. ,80
+2p.N11.1RT,You knew that you would lose this round too. ,45
+2p.N11.2RT,You were not in the mood to play this game anyway. ,51
+2p.N11.3RT,"It was clear that you could have stopped half way through, but you were made to keep on playing. ",97
+2p.N11.4RT,What a waste of time.,21
+2p.N11.5RT,"Angrily, you put your last pieces back into the box.",52
+2p.N12.1RT,You really don’t know what to do. ,34
+2p.N12.2RT,You have been friends with this couple for a long time but now they have suddenly broken up. ,93
+2p.N12.3RT,"You knew they have had some problems before, but you did not realize that it was that serious. ",95
+2p.N12.4RT,"They do not talk anymore, and both have asked you to be on their side. ",71
+2p.N12.5RT,But they also use you as a medium of communication. ,52
+2p.N12.6RT,You feel like you will have to decide between them. ,52
+2p.N12.7RT,"Feeling conflicted, you look at old pictures of you all together. ",66
+3pF.N1.1RT,It is early in the morning.,27
+3pF.N1.2RT,The alarm clock rings relentlessly.,35
+3pF.N1.3RT,"Rebecca has had a rough night again, waking up several times.",61
+3pF.N1.4RT,Grumbling she makes her way to the bathroom and takes a look at herself in the mirror.,86
+3pF.N1.5RT,Bags under her eyes reflect the fact that she hasn't slept normally for days.,77
+3pF.N1.6RT,The thought of going to work today makes her feel exhausted.,60
+3pF.N2.1RT,Sarah has not been out of the house for quite a while.,54
+3pF.N2.2RT,There is no one around to meet and she does not have any idea what to do with the day.,86
+3pF.N2.3RT,She looks at some pictures of some friends and some nice times.,63
+3pF.N2.4RT,"She looks around the room, which seems now more empty and bigger than usual.",76
+3pF.N2.5RT,Looking at the pictures makes her feel more lonelier.,53
+3pF.N3.1RT,"With a short scream, Leona wakes up.",36
+3pF.N3.2RT,It has been a long time since she last remembered a dream.,58
+3pF.N3.3RT,She feels the cold sweat on her forehead.,41
+3pF.N3.4RT,She had been trying to fight a dark creature but suddenly a chase began and she had nowhere to go.,98
+3pF.N3.5RT,The last thing she can remember is the fall into complete darkness.,67
+3pF.N3.6RT,Thinking about the dream leaves her troubled.,45
+3pF.N4.1RT,Mary just wants to forget this day!,35
+3pF.N4.2RT,She cannot believe that all the people in the city have seen her running around like a moron.,93
+3pF.N4.3RT,"Even worse, it had to be her colleague telling her that she should check what was stuck on her back.",100
+3pF.N4.4RT,She really does not want to go to work tomorrow.,48
+3pF.N4.5RT,The situation couldn’t have been more embarrassing for her. ,60
+3pF.N5.1RT,Roberta cannot believe that it is happening again.,50
+3pF.N5.2RT,Only last week she had trouble finding the keys. ,49
+3pF.N5.3RT,"Today she already been searching for two hours, but still no sign of them.",74
+3pF.N5.4RT,She was sure she left them in their usual spot.,47
+3pF.N5.5RT,"Not having found anything, she feels frustrated.",48
+3pF.N6.1RT,Maureen has never read a book that fast.,40
+3pF.N6.2RT,"From the beginning, she could not put it down, because she empathizes with the main character.",94
+3pF.N6.3RT,She been enjoying every minute of reading and shared every thrill described by the author,89
+3pF.N6.4RT,"However, the death of the main character at the end was not only a surprise, but a disaster.",92
+3pF.N6.5RT,"After having closed the book, she feels miserable.",50
+2p.P1.1RT,"With a full bag in your hand, you make your way home. ",54
+2p.P1.2RT,"It feels quite heavy, but that does not really matter. ",55
+2p.P1.3RT,You had assumed that you would have to spend so much more today.,64
+2p.P1.4RT,"You had been trying to save up for a while, and got some real bargains.",71
+2p.P1.5RT,You look at your bag with great satisfaction.,45
+2p.P2.1RT,You had to wait for four years until the next world cup finally started.,72
+2p.P2.2RT,Today is the first game and you have invited some of your friends to cheer for your team together.,98
+2p.P2.3RT,"You have hung up flags of different countries, you took part in some bets to guess who is going to win and you planned on doing themed evenings depending on who is playing.",172
+2p.P2.4RT,Passionately you set up the screen so everyone can see the match,64
+2p.P3.1RT,Today is the first day you can finally stay at home without any interruptions.,78
+2p.P3.2RT,In the last weeks you have not had a minute for yourself.,57
+2p.P3.3RT,"Today, nobody will disturb you, and you do not have to go anywhere.",67
+2p.P3.4RT,You longed for this day and finally it is here.,47
+2p.P3.5RT,Sitting on the sofa you could not be more relaxed.,50
+2p.P4.1RT,At least 10 people have already congratulated you on your success today.,72
+2p.P4.2RT,You know that there are many more to come.,42
+2p.P4.3RT,Everyone has said something very nice and they seem very impressed.,67
+2p.P4.4RT,It is good to know that your efforts are appreciated and admired.,65
+2p.P4.5RT,The result and the reactions today make you incredibly proud.,61
+2p.P5.1RT,It was a perfect day.,21
+2p.P5.2RT,"Yesterday, you were not sure how the meeting would turn out.",60
+2p.P5.3RT,"You were prepared, but knew that some topics were more controversial than others.",81
+2p.P5.4RT,"Now, you realize that it went better than you could have imagined.",66
+2p.P5.5RT,All the tension is now forgotten.,33
+2p.P5.6RT,"For you, this moment of relief is intense. ",43
+2p.P6.1RT,You cannot believe your eyes when you open the little box you just received in the mail.,88
+2p.P6.2RT,You would never have expected such a great present.,51
+2p.P6.3RT,"The small card attached to the package confirms that it is really for you, however it is not clear who would send such an amazing gift.",135
+2p.P6.4RT,You are sure you will find out very soon.,41
+2p.P6.5RT,"Feeling excited, you try to call your best friend. ",51
+2p.P7.1RT,For a month you had been hoping for some good weather to finally be able to go to the beach.,92
+2p.P7.2RT,"Weather reports have been quite pessimistic so far, but for today they indicate a chance of a dry afternoon.",108
+2p.P7.3RT,The timing is perfect as it is a free day.,42
+2p.P7.4RT,After so much recent grey and rainy weather you hope that the forecasts hold true.,82
+2p.P7.5RT,Heading down to the beach you are very pleased to see the bright blue sky,73
+2p.P8.1RT,It is somehow sad that the holiday is over.,43
+2p.P8.2RT,"However, you had such a long time off that you are thoroughly relaxed.",70
+2p.P8.3RT,In the last two days it was even a bit boring and you felt the need to be more active again.,92
+2p.P8.4RT,Today you will be going back to your normal routine. ,53
+2p.P8.5RT,You are looking forward to seeing your friends and colleagues and you are sure you will be very productive.,107
+2p.P8.6RT,"Motivated, you get out of bed to start the day. ",48
+2p.P9.1RT,Finally it is done.,19
+2p.P9.2RT,The last boxes are now in your new apartment.,45
+2p.P9.3RT,You were looking forward to moving for a while and you found the right place. ,78
+2p.P9.4RT,Your only worry was the move itself.,36
+2p.P9.5RT,It had to be done in only one day and you had more stuff than you expected at first. ,85
+2p.P9.6RT,Without your helpers you could not have done it. ,49
+2p.P9.7RT,Everyone worked hard and carried the boxes.,43
+2p.P9.8RT,Some even brought tools and cars to make everything easier. ,60
+2p.P9.9RT,"Full of gratitude, you look at the pile of boxes in the room. ",62
+2p.P10.1RT,You are walking along the street and concentrating on what you want to buy from the shop.,89
+2p.P10.2RT,Suddenly someone calls your name from across the street.,56
+2p.P10.3RT,It is your best friend from school who you haven’t seen for ages.,65
+2p.P10.4RT,"You moved away and after that you lost contact, but you always thought how nice it would be to catch up.",104
+2p.P10.5RT,"Happily, you cross the street to say hello. ",44
+2p.P11.1RT,The last week of the month was quite hard to bear. ,51
+2p.P11.2RT,With only a few dollars left in the bank you were quite tense whenever you looked at the price of something.,108
+2p.P11.3RT,"But your situation changed drastically today, when you received your first paycheck.",84
+2p.P11.4RT,You look at your bank statement and find it hard to believe that the number displayed at the end of the paper refers to your account.,133
+2p.P11.5RT,"Enthusiastically, you plan how you are going to treat yourself. ",64
+2p.P12.1RT,The time for being worried about failing is finally over. ,58
+2p.P12.2RT,You make your way home and think of the long period spent taking lessons and practicing. ,89
+2p.P12.3RT,The first driving lessons were stressful and hard. ,51
+2p.P12.4RT,Yesterday you were still worried about making a major mistake. ,63
+2p.P12.5RT,"However, today everything went smoothly and the driving instructor was very pleased.  ",86
+2p.P12.6RT,"With your new license in hand, you go home",42
+2p.P12.7RT,You feel liberated by the events of the past hours.,51
+3pM.P1.1RT,"With a full bag in his hand, Peter makes his way home. ",55
+3pM.P1.2RT,"It feels quite heavy, but that does not really matter. ",55
+3pM.P1.3RT,He had assumed that he would have to spend so much more today.,62
+3pM.P1.4RT,"He had been trying to save up for a while, and got some real bargains.",70
+3pM.P1.5RT,He looks at his bag with great satisfaction.,44
+3pM.P2.1RT,Earl had to wait for four years until the next world cup finally started.,73
+3pM.P2.2RT,Today is the first game and he invited some of his friends to cheer for his team together.,90
+3pM.P2.3RT,"He has hung up flags of different countries, he took part in some bets to guess who is going to win and he planned on doing themed evenings depending on who is playing.",168
+3pM.P2.4RT,Passionately he sets up the screen so everyone can see the match. ,66
+3pM.P3.1RT,Today is the first day James can finally stay at home without any interruptions.,80
+3pM.P3.2RT,In the last weeks he has not had a minute for himself.,54
+3pM.P3.3RT,"Today, nobody will disturb him, and he does not have to go anywhere.",68
+3pM.P3.4RT,He longed for this day and finally it is here.,46
+3pM.P3.5RT,Sitting on the sofa he could not be more relaxed.,49
+3pM.P4.1RT,At least 10 people have already congratulated Marvin on his success today.,74
+3pM.P4.2RT,He knows that there are many more to come.,42
+3pM.P4.3RT,Everyone has said something very nice and they seem very impressed.,67
+3pM.P4.4RT,It is good to know that his efforts are appreciated and admired.,64
+3pM.P4.5RT,The result and the reactions today make him incredibly proud.,61
+3pM.P5.1RT,It was a perfect day.,21
+3pM.P5.2RT,"Yesterday, Thomas was not sure how the meeting would turn out.",62
+3pM.P5.3RT,"He was prepared, but knew that some topics were more controversial than others.",79
+3pM.P5.4RT,"Now, he realizes that it went better than he could have imagined.",65
+3pM.P5.5RT,All the tension is now forgotten.,33
+3pM.P5.6RT,"For him, this moment of relief is intense. ",43
+3pM.P6.1RT,Robert cannot believe his eyes when he opens the little box he just received in the mail.,89
+3pM.P6.2RT,He would never have expected such a great present.,50
+3pM.P6.3RT,"The small card attached to the package confirms that it is really for him, however it is not clear who would send such an amazing gift.",135
+3pM.P6.4RT,He is sure he will find out very soon.,38
+3pM.P6.5RT,"Feeling excited, he tries to call his best friend. ",51
+3pM.N7.1RT,"When Connor opened the fridge today, a very unusual smell filled the room.",74
+3pM.N7.2RT,"After some inspection, he finds a piece of moldy cheese at the back of the lowest level.",88
+3pM.N7.3RT,"It is unbelievable, as it must have been lying there for more than a month.",75
+3pM.N7.4RT,The smell and the look make him feel disgusted by the prospect of lunch. ,73
+3pM.N8.1RT,Yesterday Ron got some really bad news.,39
+3pM.N8.2RT,He still cannot believe that someone he knows was involved in the accident that was reported on the radio.,106
+3pM.N8.3RT,The news of her death hits him hard and he has to sit down.,59
+3pM.N8.4RT,He is feeling paralyzed by grief.,33
+3pM.N9.1RT,The pain was just too intense.,30
+3pM.N9.2RT,First Walter thought that he could ignore it but now he is not able to concentrate on anything else. ,101
+3pM.N9.3RT,"The headache started early in the morning and just would not go away, despite painkillers.",90
+3pM.N9.4RT,He feels it getting worse every minute.,39
+3pM.N9.5RT,He is desperate and considers going home. ,42
+3pM.N10.1RT,Sebastian cannot wait to hear the final results. ,49
+3pM.N10.2RT,Nothing can put his mind at ease.,33
+3pM.N10.3RT,The time just refuses to pass by. ,34
+3pM.N10.4RT,He was told he would get notified by the end of this afternoon and the clock is already approaching 5pm.,104
+3pM.N10.5RT,He is getting more and more nervous and it is too hard to keep sitting still. ,78
+3pM.N11.1RT,Will knew that he would lose this round too. ,45
+3pM.N11.2RT,He was not in the mood to play this game anyway. ,49
+3pM.N11.3RT,"It was clear that he could have stopped half way through, but he was made to keep on playing. ",94
+3pM.N11.4RT,What a waste of time.,21
+3pM.N11.5RT,"Angrily, he puts his last pieces back into the box. ",52
+3pM.N12.1RT,Samuel really doesn’t know what to do. ,39
+3pM.N12.2RT,He has been friends with this couple for a long time but now they have suddenly broken up. ,91
+3pM.N12.3RT,"He knew they have had some problems before, but he did not realize that it was that serious. ",93
+3pM.N12.4RT,"They do not talk anymore, and both have asked him to be on their side. ",71
+3pM.N12.5RT,But they also use him as a medium of communication. ,52
+3pM.N12.6RT,He feels like he will have to decide between them. ,51
+3pM.N12.7RT,"Feeling conflicted, he looks at old pictures of them all together. ",67
+3pF.P7.1RT,For a month Renata had been hoping for some good weather to finally be able to go to the beach.,95
+3pF.P7.2RT,"Weather reports have been quite pessimistic so far, but for today they indicate a chance of a dry afternoon.",108
+3pF.P7.3RT,The timing is perfect as it is a free day.,42
+3pF.P7.4RT,After so much recent grey and rainy weather she hopes that the forecasts hold true.,83
+3pF.P7.5RT,Heading down to the beach she is very pleased to see the bright blue sky. ,74
+3pF.P8.1RT,It is somehow sad that the holiday is over.,43
+3pF.P8.2RT,"However, Penny had such a long time off that she is thoroughly relaxed.",71
+3pF.P8.3RT,In the last two days it was even a bit boring and she felt the need to be more active again.,92
+3pF.P8.4RT,Today she will be going back to her normal routine. ,52
+3pF.P8.5RT,She is looking forward to seeing friends and colleagues and she is sure she will be very productive.,100
+3pF.P8.6RT,"Motivated, she gets out of bed to start the day. ",49
+3pF.P9.1RT,Finally it is done.,19
+3pF.P9.2RT,The last boxes are now in her new apartment.,44
+3pF.P9.3RT,Fiona was looking forward to moving for a while and she found the right place.,78
+3pF.P9.4RT,Her only worry was the move itself.,35
+3pF.P9.5RT,It had to be done in only one day and she had more stuff than she expected at first. ,85
+3pF.P9.6RT,Without her helpers she could not have done it. ,48
+3pF.P9.7RT,Everyone worked hard and carried the boxes.,43
+3pF.P9.8RT,Some even brought tools and cars to make everything easier. ,60
+3pF.P9.9RT,"Full of gratitude, she looks at the pile of boxes in the room. ",63
+3pF.P10.1RT,Jessica is walking along the street and concentrating on what she wants to buy from the shop.,93
+3pF.P10.2RT,Suddenly someone calls her name from across the street.,55
+3pF.P10.3RT,It is her best friend from school who she hasn't seen for ages.,63
+3pF.P10.4RT,"She moved away and after that they lost contact, but she always thought how nice it would be to catch up.",105
+3pF.P10.5RT,"Happily, she crosses the street to say hello.",45
+3pF.P11.1RT,The last week of the month was quite hard to bear.,50
+3pF.P11.2RT,With only a few dollars left in the bank Angela was quite tense whenever she looked at the price of something.,110
+3pF.P11.3RT,"But her situation changed drastically today, when she received her first paycheck.",82
+3pF.P11.4RT,She looks at her bank statement and finds it hard to believe that the number displayed at the end of the paper refers to her account.,133
+3pF.P11.5RT,"Enthusiastically, she plans how she is going to treat herself.",62
+3pF.P12.1RT,The time for being worried about failing is finally over.,57
+3pF.P12.2RT,Sabrina makes her way home and thinks of the long period spent taking lessons and practicing.,93
+3pF.P12.3RT,The first driving lessons were stressful and hard.,50
+3pF.P12.4RT,Yesterday she was still worried about making a major mistake.,61
+3pF.P12.5RT,"However, today everything went smoothly and the driving instructor was very pleased.",84
+3pF.P12.6RT,"With her new license in hand, she goes home.",44
+3pF.P12.7RT,She feels liberated by the events of the past hours.,52
