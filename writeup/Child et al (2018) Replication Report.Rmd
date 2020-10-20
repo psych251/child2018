@@ -42,13 +42,13 @@ The original paper being replicated can be found [here.](https://github.com/psyc
 
 ### Power Analysis
 
-Original effect size, power analysis for samples to achieve 80%, 90%, 95% power to detect that effect size.  Considerations of feasibility for selecting planned sample size. Note that this will be completed later (after 10/11/20) as it has yet to be covered in class.
+The calculated power for the original study, utilizing the simr package, was 13% for the reading times linear mixed effects model, and 16% for the emotion self-rating linear mixed effects model. Because the study will be unable to reach 80% power, the planned sample size will be calculated based off of course budgetary restrictions. Furthermore, the key analysis of interest was revised in order to select a statistical test (the T-test, also reported in the original paper) that was more likely to be powered adequately.
 
 ### Planned Sample
 
 The original experiment's participants were 36 native speakers of English with an age range of 18 to 33 years. Participants with reading disorders were excluded.
 
-In line with the original study, the current study will aim to collect data from approximately 40 participants (**note**: this may be adjusted based off of power analysis discussions; this will be revisited after 10/11/20). This sample size may be modified if budgeting constraints arise as connected to other projects within the course; should these constraints arise, the planned sample will be re-calculated and modified accordingly *prior* to the collection of any experimental data. Participants will be limited in order to include only native speakers of English and those without a diagnosed reading disorder. These exclusions will be listed in the description of the task on MTurk. Additionally, screening questions will be built into the survey on Qualtrics such that if someone indicates that they are not a native English speaker and/or have been diagnosed with a reading disorder, the survey will then terminate. 
+In line with the original study, the current study will aim to collect data from approximately 30 participants (**note**: this will be modified to maximize the sample size while working within the constraints of the course budget).  Participants will be limited in order to include only native speakers of English and those without a diagnosed reading disorder. These exclusions will be listed in the description of the task on MTurk. Additionally, screening questions will be built into the survey on Qualtrics such that if someone indicates that they are not a native English speaker and/or have been diagnosed with a reading disorder, the survey will then terminate. 
 
 ### Materials
 
@@ -85,9 +85,10 @@ The completed Qualtrics paradigm is linked [here](https://stanforduniversity.qua
 
 As in the original article, reading time data will be analyzed on a sentence-by-sentence basis (rather than collated per passage). To clean the data, filler passages must first be removed from the data. Then, outliers above or below 2.5 standard deviations of the mean reading times per sentence will be removed on a per-participant basis. Means will then be recalculated using the remaining items. A natural log transformation will then be used to normalize the reaction time data (unless data presents normally); length effects will then be controlled for from participant-to-participant by regressing reading times against the number of characters per sentence. 
 
-**The key analysis of interest** for the current replication (as was done in the original paper) is a linear mixed effects (LME) model, repeated for reading times and then emotion ratings. For examining both outcomes of interest, perspective and valence were included as fixed-effects, with participants and items as random intercepts. In the original analysis, random slopes were not included in either model due to low scores on the Akaike Information Criterion (AIC); this will also be followed in the replication.
+**The revised key analysis of interest** given power constraints and as discussed with the teaching team is a replication of the T-test statistics listed in the original paper. One T-test was reported for the influence of perspective on reading times in positive passages, and one T-test was given for the impact of perspective on emotion self-rating in positive passages. Although not the main analysis of the original paper, this statistic was more likely to be reasonably powered with the course sample constraints.
 
-No additional analyses are pre-planned.
+An exploratory analysis has been planned regarding the original analysis of interest, which was avoided due to issues with power. Due to this power issue The original key analysis was a linear mixed effects (LME) model, repeated for reading times and then emotion ratings. For examining both outcomes of interest, perspective and valence were included as fixed-effects, with participants and items as random intercepts. In the original analysis, random slopes were not included in either model due to low scores on the Akaike Information Criterion (AIC); this will also be followed in the replication. 
+
 
 ### Differences from Original Study
 
@@ -126,27 +127,211 @@ d. 'P' and 'N', followed by a number, indicate the valence and scenario number.
 e. 'RT' stands for reaction or reading time, and is preceded by a number indicating sentence.
 f. 'ER' stands for emotion self-rating.
 
-*In accordance with the above notes, column titles were represented in three part annotations structured with the perspective, valence and scenario, and value indicator (for either sentence reaction time or emotion rating). One example is '2p-P1-1RT', meaning that the passage was written in second-person about the first positive scenario, and that the value logged in that column is the reaction time for the first sentence. Another example is '3pF-N5-ER', indicating that the passage was written in third-person perspective (with a female character) about the fifth negative scenario, and that the value logged in that column is the emotion rating for that passage.* 
+*In accordance with the above notes, column titles were represented in three part annotations structured with the perspective, valence and scenario, and value indicator (for either sentence reaction time or emotion rating). One example is '2p.P1.1RT', meaning that the passage was written in second-person about the first positive scenario, and that the value logged in that column is the reaction time for the first sentence. Another example is '3pF.N5.ER', indicating that the passage was written in third-person perspective (with a female character) about the fifth negative scenario, and that the value logged in that column is the emotion rating for that passage.* 
 
-The above data preparation process is presented in code below.
+The above data preparation process is hidden code below. Data files can be found in the [data](https://github.com/psych251/child2018/tree/master/data) folder of the Github repository.
 
 ```{r include=F}
-##TBD after piloting
-
 ###Data Preparation
 
 ####Load Relevant Libraries and Functions
 
-####Import data
+library(tidyverse)
+library(RCurl) #for url import of data
+library(rstatix) #for normality testing
+library(lme4)
+
+
+####Import data from Qualtrics and Excel (Character Count Info)
+
+child2018rep_data_link <- getURL("https://raw.githubusercontent.com/psych251/child2018/b8e168688bd165ae479d5c440ec6962d51921b60/data/psych251_child2018_pilotA.csv")
+child2018rep_data <- read.csv(text = child2018rep_data_link)
+
+child2018rep_charcount_link <- getURL("https://raw.githubusercontent.com/psych251/child2018/master/data/Child_Oakhill_Garnham_2018_Sentence_CharacterCount.csv")
+child2018rep_charcount <- read.csv(text = child2018rep_charcount_link)
 
 #### Data exclusion / filtering
 
+filtered_data = child2018rep_data %>%
+  filter(StartDate!="Start Date" & EndDate != '{"ImportId":"endDate","timeZone":"America/Denver"}') %>%
+  filter(D2.NATIVE.ENGLISH==1 & D3.READING.DISORDER==2) %>%
+  select(-c("StartDate", "EndDate", "Status", "IPAddress", "Progress", "Finished", "RecordedDate", "ResponseId", "RecipientLastName", "RecipientFirstName", "RecipientEmail", "ExternalReference", "LocationLatitude", "LocationLongitude", "DistributionChannel", "UserLanguage", "Duration..in.seconds.", "D2.NATIVE.ENGLISH", "D3.READING.DISORDER"),
+         -starts_with("FILLER"),
+         -starts_with("PRACTICE"),
+         -contains("First.Click"),
+         -contains("Last.Click"),
+         -contains("Click.Count")) %>%
+  rename("Subject" = "mTurk",
+         "Age" = "D1.AGE") %>%
+  relocate("Subject", .before = "Age") %>%
+  rename_all(~str_replace_all(., "_Page.Submit", ""))  %>%
+  rename_all(~str_replace_all(., "X", ""))
+
 #### Prepare data for analysis - create columns etc.
+#### RT analysis data preparation--survey data
+
+RT_data = filtered_data %>%
+  select(-contains("ER"))
+
+long_RT_data = RT_data %>% 
+  pivot_longer(cols=-c("Subject", "Age"),
+               names_to = 'Passage',
+               values_to = 'RT') %>%
+  filter(Passage!="Subject.1" & Passage!="Age.1") %>%
+  mutate(Perspective = grepl("2p", Passage),
+         Valence = grepl(".P", Passage))
+
+#### RT analysis data prep--merging in the character count data and converting to correct format
+
+long_RT_data <- left_join(long_RT_data, child2018rep_charcount, by = c("Passage"))
+
+long_RT_data = long_RT_data %>%
+  select(-contains("Text"))
+
+long_RT_data$Subject <- as.factor(long_RT_data$Subject)
+long_RT_data$Age <- as.numeric(long_RT_data$Age)
+long_RT_data$RT <- as.numeric(long_RT_data$RT)
+long_RT_data$Perspective <- as.logical(long_RT_data$Perspective)
+long_RT_data$Valence <- as.logical(long_RT_data$Valence)
+long_RT_data$Character_Count <- as.numeric(long_RT_data$Character_Count)
+
+#### ER analysis data preparation
+ER_data = filtered_data %>%
+  select(-contains("RT"))
+
+long_ER_data = ER_data %>%
+  pivot_longer(cols = -c("Subject", "Age"),
+               names_to = 'Passage',
+               values_to = 'ER') %>%
+  filter(Passage!="Subject.1" & Passage!="Age.1") %>%
+  mutate(Perspective = grepl("2p", Passage),
+         Valence = grepl(".P", Passage))
+
+long_ER_data$Subject <- as.factor(long_ER_data$Subject)
+long_ER_data$Age <- as.numeric(long_ER_data$Age)
+long_ER_data$ER <- as.numeric(long_ER_data$ER)
+long_ER_data$Perspective <- as.logical(long_ER_data$Perspective)
+long_ER_data$Valence <- as.logical(long_ER_data$Valence)
+
 ```
 
 ### Confirmatory analysis
 
-As specified in the analysis plan, two linear mixed effects (LME) models were run; one for reading times, and one for emotion ratings. For both models, perspective and valence were included as fixed-effects, and participants and items were included as random intercepts. The original tables are presented below as Table 1 and Table 2 from Child, Oakhill, & Garnham (2018); the reading times LME model is on the left, and the self-ratings of emotions LME model is on the right.
+Prior to producing the final models, the mean and standard deviation for age needed to be calculated. For the reading times model, data above or below 2.5 standard deviations of the mean needed to be excluded. It was unclear in the original paper if means were calculated overall, or grouped, so below they are calculated overall. A natural log transformation was performed on the RT data, along with a regression of reading times against characters per sentence. Means and standard deviations were then calculated for the emotion rating model.  This code is presented below:
+
+```{r}
+####overall sample age descriptives
+long_ER_data %>%
+  summarise(Mean.Age = mean(Age, na.rm = T),
+            StdDev.Age = sd(Age, na.rm = T),
+            Range.Age = paste(min(Age, na.rm = T), "-", max(Age, na.rm = T)),
+            n = sum(!is.na(Age)))
+
+####RT analysis: exclusions based on outliers and means and SDs of remaining
+
+long_filtered_RT_data = long_RT_data %>%
+  filter(between(RT, mean(RT, na.rm=TRUE) - (2.5 * sd(RT, na.rm=TRUE)), 
+                     mean(RT, na.rm=TRUE) + (2.5 * sd(RT, na.rm=TRUE))))
+
+long_filtered_RT_data %>%
+  group_by(Perspective, Valence) %>%
+  summarise(Mean.RT = mean(RT, na.rm=T),
+            StdDev.RT = sd(RT, na.rm=T))
+
+####RT analysis: normality checks, log transformation, normality checks
+
+long_filtered_RT_data %>% 
+  shapiro_test(RT)
+
+long_filtered_RT_data$ln_RT <- log(long_filtered_RT_data$RT)
+
+long_filtered_RT_data %>% 
+  shapiro_test(ln_RT)
+
+####RT analysis: regression of ln_RT against characters per sentence and creation of residuals
+
+regression_RT_data = long_filtered_RT_data %>%
+  group_by(Subject) %>%
+  do(model = lm (ln_RT ~ Character_Count, data = long_filtered_RT_data))
+
+##code below needs work, gets Error "Unknown or uninitialised column: `na.action`.Unknown or uninitialised column: `residuals`."
+#long_filtered_RT_data$Resid_RT <- residuals(regression_RT_data)
+#then need to calculate error
+
+####ER analysis: means and standard deviations
+long_ER_data %>% 
+  group_by(Perspective, Valence) %>%
+  summarise(Mean_ER = mean(ER, na.rm=T),
+            StdDev_ER = sd(ER, na.rm=T),
+            SEM_ER = sd(ER, na.rm=T)/sqrt(length(ER[!is.na(ER)])))
+```
+
+Below is the code for the histogram of the log-transformed reading times, followed by Figure 1 from the original paper representing the same data. Note that "true" for perspective is second person, whereas "true" for valence is positive. 
+
+```{r}
+####this will be updated with log residual RTs once I figured out that step
+ggplot(long_filtered_RT_data, aes(x=Valence, y=ln_RT, fill=Perspective)) +
+  geom_bar(position="dodge", stat="identity") + 
+  scale_fill_brewer(palette="Set1")
+
+####add scale adjustments with final data to match original figure; needs error bar codes
+
+knitr::include_graphics("https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Figure1.png?raw=true")
+```
+
+Below is the code for the histogram of the emotion ratings data, followed by Figure 2 from the original paper representing the same data. Note that "true" for perspective is second-person, whereas "true" for valence is positive.
+
+```{r}
+ggplot(long_ER_data, aes(x=Valence, y=ER, fill=Perspective)) +
+  geom_bar(position="dodge", stat="identity", na.rm=T) + 
+  scale_fill_brewer(palette="Set1")
+
+####add scale adjustments with final data to match original figure; needs error bar codes
+
+knitr::include_graphics("https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Figure2.png?raw=true")
+```
+
+As specified earlier, due to power constraints replication of an alternative primary statistic, the T-test, was explored as the key analysis of interest.
+
+The original value for the T-test examining the impact of perspective on reading time in positive passages was t(4408)=3.73, p < .001. The current replication's T-test is reported below:
+
+```{r}
+###in progress, to be replaced with regression residual RTs when that's fixed
+RT_T_test = long_filtered_RT_data %>%
+  pairwise_t_test(Valence ~ Perspective)
+
+RT_T_test
+```
+
+The original value for the T-test examining the impact of perspective on emotion-self rating in positive passages was t(4335)=3.67, p < .001. The current replication's T-test is reported below:
+
+```{r}
+###in progress
+ER_T_test = long_ER_data %>%
+  pairwise_t_test(Perspective ~ Valence)
+
+ER_T_test
+```
+
+### Exploratory analyses
+
+Exploratory analyses were run with regards to the main analyses of the original paper. Two linear mixed effects (LME) models were run; one for reading times, and one for emotion ratings. For both models, perspective and valence were included as fixed-effects, and participants and items were included as random intercepts. Below is the code for running these models:
+
+```{r}
+##still working on this as of 10/18/20; this code will need to be updated for regressed residual RTs once that is figured out
+
+RT_model <- lmer(ln_RT ~ Perspective + Valence + Perspective*Valence + (1|Subject) + (1|Passage), long_filtered_RT_data)
+
+print(RT_model)
+
+ER_model <- lmer(ER ~ Perspective + Valence + Perspective*Valence + (1|Subject) + (1|Passage), long_ER_data)
+
+print(ER_model)
+
+```
+
+
+The original tables are presented below as Table 1 and Table 2 from Child, Oakhill, & Garnham (2018); the reading times LME model is on the left, and the self-ratings of emotions LME model is on the right.
 
 ```{r}
 knitr::include_graphics("https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Table1and2.png?raw=true")
@@ -158,12 +343,6 @@ Below are the tables created in the replication project; the reading times LME m
 ###TBD
 ```
 
-
-*Side-by-side graph with original graph is ideal here*
-
-### Exploratory analyses
-
-Any follow-up analyses desired (not required).  
 
 ## Discussion
 
