@@ -253,6 +253,7 @@ long_filtered_RT_data %>%
 regression_RT_data = lmer(ln_RT ~ 1 + Character_Count + (1 + Character_Count | Subject), long_filtered_RT_data)
 
 long_filtered_RT_data$ln_RT_Resid = residuals(regression_RT_data)
+
 ```
 
 Below is the code for the histogram of the log-transformed reading times, followed by Figure 1 from the original paper representing the same data. Note that "true" for perspective is second person, whereas "true" for valence is positive. 
@@ -261,13 +262,15 @@ Below is the code for the histogram of the log-transformed reading times, follow
 RT_data_graph = long_filtered_RT_data %>%
   group_by(Perspective, Valence) %>%
   summarise(ln_RT_Resid = ln_RT_Resid,
-    SE_RT = sd(ln_RT_Resid = ln_RT_Resid,  na.rm=T)/sqrt(length(ln_RT_Resid[!is.na(ln_RT_Resid)])))
+    Mean_lnRTResid = mean(ln_RT_Resid, na.rm=T),
+    SE_RT = sigma(regression_RT_data))
 
-ggplot(long_filtered_RT_data, aes(x=Valence, y=ln_RT_Resid, fill=Perspective)) +
-  geom_bar(position="dodge", stat="identity") + 
-  scale_fill_brewer(palette="Set1") +
-  geom_errorbar(aes(ymin=ln_RT_Resid-SE_RT, ymax=ER-SE_RT), width=.5, position=position_dodge(.9))
-####add scale adjustments with final data to match original figure; needs error bar codes
+ggplot(RT_data_graph, aes(x=Valence, y=ln_RT_Resid, fill=Perspective)) +
+  geom_bar(position="dodge", stat="identity") +
+  geom_errorbar(aes(ymin=Mean_lnRTResid-SE_RT, ymax=Mean_lnRTResid+SE_RT), width = .5, position=position_dodge(.9), na.rm=T)  +
+  ylim(-0.050, 0.050)
+
+####not clear in original data what they used for error bars when plotting the residuals of the ln-RTs...
 
 knitr::include_graphics("https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Figure1.png?raw=true")
 ```
@@ -277,17 +280,14 @@ Below is the code for the histogram of the emotion ratings data, followed by Fig
 ```{r}
 ER_data_graph = long_ER_data %>% 
   group_by(Perspective, Valence) %>%
-  summarise(ER = ER,
-            Mean_ER = mean(ER, na.rm=T),
+  summarise(Mean_ER = mean(ER, na.rm=T),
             StdDev_ER = sd(ER, na.rm=T),
             SE_ER = sd(ER, na.rm=T)/sqrt(length(ER[!is.na(ER)])))
 
-ggplot(ER_data_graph, aes(x=Valence, y=ER, fill=Perspective)) +
-  geom_bar(position="dodge", stat="identity", na.rm=T) + 
-  scale_fill_brewer(palette="Set1") +
-  geom_errorbar(aes(ymin=ER-SE_ER, ymax=ER+SE_ER), width=.5, position=position_dodge(.9))
 
-####add scale adjustments with final data to match original figure; needs error bar codes
+ggplot(ER_data_graph, aes(x=Valence, y=Mean_ER, fill=Perspective)) +
+  geom_bar(position="dodge", stat="identity") +
+  geom_errorbar(aes(ymin=Mean_ER-SE_ER, ymax=Mean_ER+SE_ER), width = .5, position=position_dodge(.9), na.rm=T)  
 
 knitr::include_graphics("https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Figure2.png?raw=true")
 ```
@@ -321,7 +321,7 @@ Exploratory analyses were run with regards to the main analyses of the original 
 ```{r}
 ##still working on this as of 10/18/20; this code will need to be updated for regressed residual RTs once that is figured out
 
-RT_model <- lmer(ln_RT ~ Perspective + Valence + Perspective*Valence + (1|Subject) + (1|Passage), long_filtered_RT_data)
+RT_model <- lmer(ln_RT_Resid ~ Perspective + Valence + Perspective*Valence + (1|Subject) + (1|Passage), long_filtered_RT_data)
 
 print(RT_model)
 
