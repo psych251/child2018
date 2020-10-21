@@ -222,9 +222,9 @@ Prior to producing the final models, the mean and standard deviation for age nee
 ```{r}
 ####overall sample age descriptives
 long_ER_data %>%
-  summarise(Mean.Age = mean(Age, na.rm = T),
-            StdDev.Age = sd(Age, na.rm = T),
-            Range.Age = paste(min(Age, na.rm = T), "-", max(Age, na.rm = T)),
+  summarise(Mean_Age = mean(Age, na.rm = T),
+            StdDev_Age = sd(Age, na.rm = T),
+            Range_Age = paste(min(Age, na.rm = T), "-", max(Age, na.rm = T)),
             n = sum(!is.na(Age)))
 
 ####RT analysis: exclusions based on outliers and means and SDs of remaining
@@ -235,8 +235,8 @@ long_filtered_RT_data = long_RT_data %>%
 
 long_filtered_RT_data %>%
   group_by(Perspective, Valence) %>%
-  summarise(Mean.RT = mean(RT, na.rm=T),
-            StdDev.RT = sd(RT, na.rm=T))
+  summarise(Mean_RT = mean(RT, na.rm=T),
+            StdDev_RT = sd(RT, na.rm=T))
 
 ####RT analysis: normality checks, log transformation, normality checks
 
@@ -250,30 +250,23 @@ long_filtered_RT_data %>%
 
 ####RT analysis: regression of ln_RT against characters per sentence and creation of residuals
 
-regression_RT_data = long_filtered_RT_data %>%
-  group_by(Subject) %>%
-  do(model = lm (ln_RT ~ Character_Count, data = long_filtered_RT_data))
+regression_RT_data = lmer(ln_RT ~ 1 + Character_Count + (1 + Character_Count | Subject), long_filtered_RT_data)
 
-##code below needs work, gets Error "Unknown or uninitialised column: `na.action`.Unknown or uninitialised column: `residuals`."
-#long_filtered_RT_data$Resid_RT <- residuals(regression_RT_data)
-#then need to calculate error
-
-####ER analysis: means and standard deviations
-long_ER_data %>% 
-  group_by(Perspective, Valence) %>%
-  summarise(Mean_ER = mean(ER, na.rm=T),
-            StdDev_ER = sd(ER, na.rm=T),
-            SEM_ER = sd(ER, na.rm=T)/sqrt(length(ER[!is.na(ER)])))
+long_filtered_RT_data$ln_RT_Resid = residuals(regression_RT_data)
 ```
 
 Below is the code for the histogram of the log-transformed reading times, followed by Figure 1 from the original paper representing the same data. Note that "true" for perspective is second person, whereas "true" for valence is positive. 
 
 ```{r}
-####this will be updated with log residual RTs once I figured out that step
-ggplot(long_filtered_RT_data, aes(x=Valence, y=ln_RT, fill=Perspective)) +
-  geom_bar(position="dodge", stat="identity") + 
-  scale_fill_brewer(palette="Set1")
+RT_data_graph = long_filtered_RT_data %>%
+  group_by(Perspective, Valence) %>%
+  summarise(ln_RT_Resid = ln_RT_Resid,
+    SE_RT = sd(ln_RT_Resid = ln_RT_Resid,  na.rm=T)/sqrt(length(ln_RT_Resid[!is.na(ln_RT_Resid)])))
 
+ggplot(long_filtered_RT_data, aes(x=Valence, y=ln_RT_Resid, fill=Perspective)) +
+  geom_bar(position="dodge", stat="identity") + 
+  scale_fill_brewer(palette="Set1") +
+  geom_errorbar(aes(ymin=ln_RT_Resid-SE_RT, ymax=ER-SE_RT), width=.5, position=position_dodge(.9))
 ####add scale adjustments with final data to match original figure; needs error bar codes
 
 knitr::include_graphics("https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Figure1.png?raw=true")
@@ -282,9 +275,17 @@ knitr::include_graphics("https://github.com/psych251/child2018/blob/master/origi
 Below is the code for the histogram of the emotion ratings data, followed by Figure 2 from the original paper representing the same data. Note that "true" for perspective is second-person, whereas "true" for valence is positive.
 
 ```{r}
-ggplot(long_ER_data, aes(x=Valence, y=ER, fill=Perspective)) +
+ER_data_graph = long_ER_data %>% 
+  group_by(Perspective, Valence) %>%
+  summarise(ER = ER,
+            Mean_ER = mean(ER, na.rm=T),
+            StdDev_ER = sd(ER, na.rm=T),
+            SE_ER = sd(ER, na.rm=T)/sqrt(length(ER[!is.na(ER)])))
+
+ggplot(ER_data_graph, aes(x=Valence, y=ER, fill=Perspective)) +
   geom_bar(position="dodge", stat="identity", na.rm=T) + 
-  scale_fill_brewer(palette="Set1")
+  scale_fill_brewer(palette="Set1") +
+  geom_errorbar(aes(ymin=ER-SE_ER, ymax=ER+SE_ER), width=.5, position=position_dodge(.9))
 
 ####add scale adjustments with final data to match original figure; needs error bar codes
 
