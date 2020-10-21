@@ -268,7 +268,10 @@ RT_data_graph = long_filtered_RT_data %>%
 ggplot(RT_data_graph, aes(x=Valence, y=ln_RT_Resid, fill=Perspective)) +
   geom_bar(position="dodge", stat="identity") +
   geom_errorbar(aes(ymin=Mean_lnRTResid-SE_RT, ymax=Mean_lnRTResid+SE_RT), width = .5, position=position_dodge(.9), na.rm=T)  +
-  ylim(-0.050, 0.050)
+  ylim(-0.050, 0.050) +
+  labs(title="Reading Times for Valence by Perspective", y="Log Residual Reading Times", x = "Valence") +
+  scale_x_discrete(labels=c("FALSE"="Negative", "TRUE"="Positive")) +
+  scale_fill_discrete(name="Perspective", labels = c("Third-person (he/she)", "Second-person (you)"))
 
 ####not clear in original data what they used for error bars when plotting the residuals of the ln-RTs...
 
@@ -287,7 +290,10 @@ ER_data_graph = long_ER_data %>%
 
 ggplot(ER_data_graph, aes(x=Valence, y=Mean_ER, fill=Perspective)) +
   geom_bar(position="dodge", stat="identity") +
-  geom_errorbar(aes(ymin=Mean_ER-SE_ER, ymax=Mean_ER+SE_ER), width = .5, position=position_dodge(.9), na.rm=T)  
+  geom_errorbar(aes(ymin=Mean_ER-SE_ER, ymax=Mean_ER+SE_ER), width = .5, position=position_dodge(.9), na.rm=T) +
+  labs(title="Self-rated Emotions for Valence by Perspective", y="Self-rated Emotion", x = "Valence") +
+  scale_x_discrete(labels=c("FALSE"="Negative", "TRUE"="Positive")) +
+  scale_fill_discrete(name="Perspective", labels = c("Third-person (he/she)", "Second-person (you)"))
 
 knitr::include_graphics("https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Figure2.png?raw=true")
 ```
