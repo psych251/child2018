@@ -138,7 +138,7 @@ The above data preparation process is hidden code below. Data files can be found
 
 library(tidyverse)
 library(RCurl) #for url import of data
-library(rstatix) #for normality testing
+library(rstatix) 
 library(lme4)
 
 
@@ -303,9 +303,9 @@ As specified earlier, due to power constraints replication of an alternative pri
 The original value for the T-test examining the impact of perspective on reading time in positive passages was t(4408)=3.73, p < .001. The current replication's T-test is reported below:
 
 ```{r}
-###in progress, to be replaced with regression residual RTs when that's fixed
-RT_T_test = long_filtered_RT_data %>%
-  pairwise_t_test(Valence ~ Perspective)
+RT_T_test <- long_filtered_RT_data %>%
+  t_test(Valence ~ Perspective) %>%
+  add_significance()
 
 RT_T_test
 ```
@@ -313,9 +313,9 @@ RT_T_test
 The original value for the T-test examining the impact of perspective on emotion-self rating in positive passages was t(4335)=3.67, p < .001. The current replication's T-test is reported below:
 
 ```{r}
-###in progress
-ER_T_test = long_ER_data %>%
-  pairwise_t_test(Perspective ~ Valence)
+ER_T_test <- long_ER_data %>%
+  t_test(Valence~Perspective) %>%
+  add_significance()
 
 ER_T_test
 ```
