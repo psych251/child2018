@@ -261,11 +261,10 @@ Below is the code for the histogram of the log-transformed reading times, follow
 ```{r}
 RT_data_graph = long_filtered_RT_data %>%
   group_by(Perspective, Valence) %>%
-  summarise(ln_RT_Resid = ln_RT_Resid,
-    Mean_lnRTResid = mean(ln_RT_Resid, na.rm=T),
-    SE_RT = sigma(regression_RT_data))
+  summarise(Mean_lnRTResid = mean(ln_RT_Resid, na.rm=T),
+            SE_RT = sqrt(sum(residuals(regression_RT_data)^2) / df.residual(regression_RT_data)))
 
-ggplot(RT_data_graph, aes(x=Valence, y=ln_RT_Resid, fill=Perspective)) +
+ggplot(RT_data_graph, aes(x=Valence, y=Mean_lnRTResid, fill=Perspective)) +
   geom_bar(position="dodge", stat="identity") +
   geom_errorbar(aes(ymin=Mean_lnRTResid-SE_RT, ymax=Mean_lnRTResid+SE_RT), width = .5, position=position_dodge(.9), na.rm=T)  +
   ylim(-0.050, 0.050) +
@@ -325,15 +324,15 @@ ER_T_test
 Exploratory analyses were run with regards to the main analyses of the original paper. Two linear mixed effects (LME) models were run; one for reading times, and one for emotion ratings. For both models, perspective and valence were included as fixed-effects, and participants and items were included as random intercepts. Below is the code for running these models:
 
 ```{r}
-##still working on this as of 10/18/20; this code will need to be updated for regressed residual RTs once that is figured out
+##still working on this as of 10/18/20
 
-RT_model <- lmer(ln_RT_Resid ~ Perspective + Valence + Perspective*Valence + (1|Subject) + (1|Passage), long_filtered_RT_data)
+RT_model <- lmer(ln_RT_Resid ~ Perspective + Valence + Perspective*Valence + (1 + Perspective + Valence | Subject/Passage) +  long_filtered_RT_data)
 
-print(RT_model)
+summary(RT_model)
 
 ER_model <- lmer(ER ~ Perspective + Valence + Perspective*Valence + (1|Subject) + (1|Passage), long_ER_data)
 
-print(ER_model)
+summary(ER_model)
 
 ```
 
