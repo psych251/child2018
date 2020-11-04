@@ -74,10 +74,11 @@ In the original experiment,
 
 The 48 total passages were presented in random order for every participant, with counterbalancing for perspective, valence and gender of character. Reaction time was collected on a sentence-by-sentence basis. The experiment was originally presented utilizing E-Prime software. Appearance-wise, it is of note that the text was presented on a white background with a size 24 black font. 
 
-The above procedure of the original experiment was followed very closely. There were two procedural deviations: 
+The above procedure of the original experiment was followed very closely. There were three procedural deviations: 
 
-1. The participant clicked on the number to rate their own emotion, rather than typing it in on their own keyboard, and
-2. The experiment was implemented using Qualtrics rather than E-prime, as previously mentioned.
+1. The participant clicked on the number to rate their own emotion, rather than typing it in on their own keyboard, 
+2. The experiment was implemented using Qualtrics rather than E-prime, as previously mentioned, and
+3. Following Pilot B, in which a participant appeared to have used a bot to progress through the experiment as quickly as possible, a delay was added to each sentence such that each participant had to spend at least a half a second on each sentence. This was calculated as an expected minimum amount of time for the participant to view the shortest presented sentences.
 
 The completed Qualtrics paradigm is linked [here](https://stanforduniversity.qualtrics.com/jfe/form/SV_9sLrDIEvPE0mXel). Please note that this link is to the pilot survey, rather than the actual implemented survey, to prevent erroneous data collection. There were no differences between this pilot and the final implemented experiment. 
 
@@ -144,7 +145,7 @@ library(lme4)
 
 ####Import data from Qualtrics and Excel (Character Count Info)
 
-child2018rep_data_link <- getURL("https://raw.githubusercontent.com/psych251/child2018/master/data/psych251_child2018_anonymized_pilotA.csv")
+child2018rep_data_link <- getURL("https://raw.githubusercontent.com/psych251/child2018/master/data/psych251_child2018_anonymized_pilotB.csv")
 child2018rep_data <- read.csv(text = child2018rep_data_link)
 
 child2018rep_charcount_link <- getURL("https://raw.githubusercontent.com/psych251/child2018/master/data/Child_Oakhill_Garnham_2018_Sentence_CharacterCount.csv")
@@ -177,7 +178,7 @@ long_RT_data = RT_data %>%
   pivot_longer(cols=-c("Subject", "Age"),
                names_to = 'Passage',
                values_to = 'RT') %>%
-  filter(Passage!="Subject.1" & Passage!="Age.1") %>%
+  filter(Passage!="Subject.1" & Passage!="Age.1", RT != 0) %>% #RT!=0 added in Pilot B to combat RT botting
   mutate(Perspective = grepl("2p", Passage),
          Valence = grepl(".P", Passage))
 
@@ -274,7 +275,6 @@ ggplot(data = RT_data_graph,
                     ymax = Mean_lnRTResid+SE_RT), 
                 width = .5, position=position_dodge(.9), 
                 na.rm=T)  +
-  ylim(-0.050, 0.050) +
   labs(title = "Reading Times ",
        subtitle = "for Valence by Perspective",
        y = "Log Residual Reading Times", 
@@ -350,7 +350,7 @@ ER_T_test
 Exploratory analyses were run with regards to the main analyses of the original paper. Two linear mixed effects (LME) models were run; one for reading times, and one for emotion ratings. For both models, perspective and valence were included as fixed-effects, and participants and items were included as random intercepts. Below is the code for running these models:
 
 ```{r}
-##still working on this as of 10/25/20
+##still working on this as of 11/4/20
 
 RT_model <- lmer(ln_RT_Resid ~ Perspective + Valence + Perspective*Valence + (1 + Perspective + Valence | Subject), long_filtered_RT_data)
 
