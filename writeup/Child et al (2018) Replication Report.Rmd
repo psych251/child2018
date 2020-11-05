@@ -76,15 +76,14 @@ The 48 total passages were presented in random order for every participant, with
 
 The above procedure of the original experiment was followed very closely. There were three procedural deviations: 
 
-1. The participant clicked on the number to rate their own emotion, rather than typing it in on their own keyboard, 
-2. The experiment was implemented using Qualtrics rather than E-prime, as previously mentioned, and
-3. Following Pilot B, in which a participant appeared to have used a bot to progress through the experiment as quickly as possible, a delay was added to each sentence such that each participant had to spend at least a half a second on each sentence. This was calculated as an expected minimum amount of time for the participant to view the shortest presented sentences.
+1. The participant clicked on the number to rate their own emotion, rather than typing it in on their own keyboard, and 
+2. The experiment was implemented using Qualtrics rather than E-prime, as previously mentioned.
 
 The completed Qualtrics paradigm is linked [here](https://stanforduniversity.qualtrics.com/jfe/form/SV_9sLrDIEvPE0mXel). Please note that this link is to the pilot survey, rather than the actual implemented survey, to prevent erroneous data collection. There were no differences between this pilot and the final implemented experiment. 
 
 ### Analysis Plan
 
-As in the original article, reading time data will be analyzed on a sentence-by-sentence basis (rather than collated per passage). To clean the data, filler passages must first be removed from the data. Then, outliers above or below 2.5 standard deviations of the mean reading times per sentence will be removed on a per-participant basis. Means will then be recalculated using the remaining items. A natural log transformation will then be used to normalize the reaction time data (unless data presents normally); length effects will then be controlled for from participant-to-participant by regressing reading times against the number of characters per sentence. 
+As in the original article, reading time data will be analyzed on a sentence-by-sentence basis (rather than collated per passage). To clean the data, filler passages must first be removed from the data. For exclusions, participants with more than half of their responses equal to less than 400ms were excluded from analysis. Then, outliers above or below 2.5 standard deviations of the mean reading times per sentence will be removed on a per-participant basis. Means will then be recalculated using the remaining items. A natural log transformation will then be used to normalize the reaction time data (unless data presents normally); length effects will then be controlled for from participant-to-participant by regressing reading times against the number of characters per sentence. 
 
 **The revised key analysis of interest** given power constraints and as discussed with the teaching team is a replication of the T-test statistics listed in the original paper. One T-test was reported for the influence of perspective on reading times in positive passages, and one T-test was given for the impact of perspective on emotion self-rating in positive passages. Although not the main analysis of the original paper, this statistic was more likely to be reasonably powered with the course sample constraints.
 
@@ -117,7 +116,9 @@ You can comment this section out prior to final report with data collection.
 
 ### Data preparation
 
-Raw data was cleaned to remove additional columns collected by Qualtrics that were unnecessary for analyses, as well as the filler passages (denoted with the "FILLER" tag in the column heading). Means were calculated for reading time per sentence, and any sentence that had a reaction time above or below 2 standard deviations of the mean was excluded. Means were then recalculated following these exclusions. A natural log transformation was performed to normalize the data, and length effects were controlled for by regressing each sentence's reading time against the number of characters in that sentence. Two additional columns were then created; one to represent the perspective condition (second-person versus third person) and one to represent the valence condition (positive versus negative).
+Raw data was cleaned to remove additional columns collected by Qualtrics that were unnecessary for analyses, as well as the filler passages (denoted with the "FILLER" tag in the column heading). Two additional columns were then created; one to represent the perspective condition (second-person versus third person) and one to represent the valence condition (positive versus negative).
+
+For exclusions, participants with more than half of their responses equal to less than 400ms were excluded from analysis, as such a low mean indicated bot responses or 'key-smashing' responses from participants.
 
 Some notes for interpreting the raw data column headings:
 
@@ -151,7 +152,7 @@ child2018rep_data <- read.csv(text = child2018rep_data_link)
 child2018rep_charcount_link <- getURL("https://raw.githubusercontent.com/psych251/child2018/master/data/Child_Oakhill_Garnham_2018_Sentence_CharacterCount.csv")
 child2018rep_charcount <- read.csv(text = child2018rep_charcount_link)
 
-#### Data exclusion / filtering
+#### Data filtering
 
 filtered_data = child2018rep_data %>%
   filter(StartDate!="Start Date" & EndDate != '{"ImportId":"endDate","timeZone":"America/Denver"}') %>%
@@ -168,8 +169,7 @@ filtered_data = child2018rep_data %>%
   rename_all(~str_replace_all(., "_Page.Submit", ""))  %>%
   rename_all(~str_replace_all(., "X", ""))
 
-#### Prepare data for analysis - create columns etc.
-#### RT analysis data preparation--survey data
+#### RT analysis data preparation
 
 RT_data = filtered_data %>%
   select(-contains("ER"))
@@ -178,16 +178,15 @@ long_RT_data = RT_data %>%
   pivot_longer(cols=-c("Subject", "Age"),
                names_to = 'Passage',
                values_to = 'RT') %>%
-  filter(Passage!="Subject.1" & Passage!="Age.1", RT != 0) %>% #RT!=0 added in Pilot B to combat RT botting
+  filter(Passage!="Subject.1" & Passage!="Age.1") %>%
   mutate(Perspective = grepl("2p", Passage),
          Valence = grepl(".P", Passage))
-
-#### RT analysis data prep--merging in the character count data and converting to correct format
 
 long_RT_data <- left_join(long_RT_data, child2018rep_charcount, by = c("Passage"))
 
 long_RT_data = long_RT_data %>%
-  select(-contains("Text"))
+  select(-contains("Text")) %>%
+  na.omit(RT)
 
 long_RT_data$Subject <- as.factor(long_RT_data$Subject)
 long_RT_data$Age <- as.numeric(long_RT_data$Age)
@@ -195,6 +194,22 @@ long_RT_data$RT <- as.numeric(long_RT_data$RT)
 long_RT_data$Perspective <- as.logical(long_RT_data$Perspective)
 long_RT_data$Valence <- as.logical(long_RT_data$Valence)
 long_RT_data$Character_Count <- as.numeric(long_RT_data$Character_Count)
+
+### RT data filtering (bot then SD)
+  
+long_filtered_RT_data = long_RT_data %>% 
+  group_by(Subject) %>%
+  mutate(trials = as.numeric(!is.na(RT)), #creates dummy=1 for completed trials
+         bot = as.numeric(RT < 0.399, na.rm=TRUE), #creates dummy=1 for suspicious trials
+         bot_trials = sum(bot, na.rm=TRUE), #sums the total suspicious trials
+         total_trials = sum(trials, na.rm=TRUE), #sums the total trials (may or may not vary)
+         bot_prop = bot_trials/total_trials, #calculates proportion of suspicious/good trials
+         exclude_bot = bot_prop>.5) %>% #excludes anyone with more than 50% bad trials
+  filter(exclude_bot!=TRUE)
+
+long_filtered_RT_data %>%
+  filter(between(RT, mean(RT, na.rm=TRUE) - (2.5 * sd(RT, na.rm=TRUE)), 
+                 mean(RT, na.rm=TRUE) + (2.5 * sd(RT, na.rm=TRUE)))) 
 
 #### ER analysis data preparation
 ER_data = filtered_data %>%
@@ -221,18 +236,12 @@ long_ER_data$Valence <- as.logical(long_ER_data$Valence)
 Prior to producing the final models, the mean and standard deviation for age needed to be calculated. For the reading times model, data above or below 2.5 standard deviations of the mean needed to be excluded. It was unclear in the original paper if means were calculated overall, or grouped, so below they are calculated overall. A natural log transformation was performed on the RT data, along with a regression of reading times against characters per sentence. Means and standard deviations were then calculated for the emotion rating model.  This code is presented below:
 
 ```{r}
-####overall sample age descriptives
+####descriptives
 long_ER_data %>%
   summarise(Mean_Age = mean(Age, na.rm = T),
             StdDev_Age = sd(Age, na.rm = T),
             Range_Age = paste(min(Age, na.rm = T), "-", max(Age, na.rm = T)),
             n = sum(!is.na(Age)))
-
-####RT analysis: exclusions based on outliers and means and SDs of remaining
-
-long_filtered_RT_data = long_RT_data %>%
-  filter(between(RT, mean(RT, na.rm=TRUE) - (2.5 * sd(RT, na.rm=TRUE)), 
-                     mean(RT, na.rm=TRUE) + (2.5 * sd(RT, na.rm=TRUE))))
 
 long_filtered_RT_data %>%
   group_by(Perspective, Valence) %>%
