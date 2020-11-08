@@ -42,13 +42,13 @@ The original paper being replicated can be found [here.](https://github.com/psyc
 
 ### Power Analysis
 
-The calculated power for the original study, utilizing the simr package, was 13% for the reading times linear mixed effects model, and 16% for the emotion self-rating linear mixed effects model. Because the study will be unable to reach 80% power, the planned sample size will be calculated based off of course budgetary restrictions. Furthermore, the key analysis of interest was revised in order to select a statistical test (the T-test, also reported in the original paper) that was more likely to be powered adequately.
+The calculated power for the original study, utilizing the simr package, was 13% for the reading times linear mixed effects model, and 16% for the emotion self-rating linear mixed effects model. Because of low power, the key analysis of interest was revised in order to select a statistical test (the t-test, also reported in the original paper) that was more likely to be powered adequately. Using GPower, effect size of the original t-tests were calculated; the first t-test, on difference in the reading times of positive passages based on perspective, had an effect size of *d*=0.11 and a power of 16%. The second t-test had an effect size of *d*=0.13 and a power of 18%. Unfortunately, because the study will be unable to reach 80% power in either scenario without a large sample size, the planned sample size will be calculated based off of course budgetary restrictions. 
 
 ### Planned Sample
 
 The original experiment's participants were 36 native speakers of English with an age range of 18 to 33 years. Participants with reading disorders were excluded.
 
-In line with the original study, the current study will aim to collect data from approximately 30 participants (**note**: this will be modified to maximize the sample size while working within the constraints of the course budget).  Participants will be limited in order to include only native speakers of English and those without a diagnosed reading disorder. These exclusions will be listed in the description of the task on MTurk. Additionally, screening questions will be built into the survey on Qualtrics such that if someone indicates that they are not a native English speaker and/or have been diagnosed with a reading disorder, the survey will then terminate. 
+In line with the original study, the current study will aim to collect data from approximately 40 participants.  Participants will be limited in order to include only native speakers of English and those without a diagnosed reading disorder. These exclusions will be listed in the description of the task on MTurk. Additionally, screening questions will be built into the survey on Qualtrics such that if someone indicates that they are not a native English speaker and/or have been diagnosed with a reading disorder, the survey will then terminate. 
 
 ### Materials
 
@@ -79,22 +79,22 @@ The above procedure of the original experiment was followed very closely. There 
 1. The participant clicked on the number to rate their own emotion, rather than typing it in on their own keyboard, and 
 2. The experiment was implemented using Qualtrics rather than E-prime, as previously mentioned.
 
-The completed Qualtrics paradigm is linked [here](https://stanforduniversity.qualtrics.com/jfe/form/SV_9sLrDIEvPE0mXel). Please note that this link is to the pilot survey, rather than the actual implemented survey, to prevent erroneous data collection. There were no differences between this pilot and the final implemented experiment. 
+The completed Qualtrics paradigm is linked [here](https://stanforduniversity.qualtrics.com/jfe/form/SV_d5Op8N7nj2MYa2N). Please note that this link is to the paradigm used in Pilot B, rather than the actual implemented survey, to prevent erroneous data collection on the implemented experiment paradigm. There were no differences between this pilot and the final implemented experiment. 
 
 ### Analysis Plan
 
 As in the original article, reading time data will be analyzed on a sentence-by-sentence basis (rather than collated per passage). To clean the data, filler passages must first be removed from the data. For exclusions, participants with more than half of their responses equal to less than 400ms were excluded from analysis. Then, outliers above or below 2.5 standard deviations of the mean reading times per sentence will be removed on a per-participant basis. Means will then be recalculated using the remaining items. A natural log transformation will then be used to normalize the reaction time data (unless data presents normally); length effects will then be controlled for from participant-to-participant by regressing reading times against the number of characters per sentence. 
 
-**The revised key analysis of interest** given power constraints and as discussed with the teaching team is a replication of the T-test statistics listed in the original paper. One T-test was reported for the influence of perspective on reading times in positive passages, and one T-test was given for the impact of perspective on emotion self-rating in positive passages. Although not the main analysis of the original paper, this statistic was more likely to be reasonably powered with the course sample constraints.
+**The revised key analysis of interest** given power constraints and as discussed with the teaching team is a replication of the t-test statistics listed in the original paper. One t-test was reported for the influence of perspective on reading times in positive passages, and one t-test was given for the impact of perspective on emotion self-rating in positive passages. Although not the main analysis of the original paper, this statistic was more likely to be reasonably powered with the course sample constraints.
 
-An exploratory analysis has been planned regarding the original analysis of interest, which was avoided due to issues with power. Due to this power issue The original key analysis was a linear mixed effects (LME) model, repeated for reading times and then emotion ratings. For examining both outcomes of interest, perspective and valence were included as fixed-effects, with participants and items as random intercepts. In the original analysis, random slopes were not included in either model due to low scores on the Akaike Information Criterion (AIC); this will also be followed in the replication. 
+An exploratory analysis has been planned regarding the original analysis of interest, which was avoided due to issues with power. The original key analysis was a linear mixed effects (LME) model, repeated for reading times and then emotion ratings. For examining both outcomes of interest, perspective and valence were included as fixed-effects, with participants and items as random intercepts. In the original analysis, random slopes were not included in either model due to low scores on the Akaike Information Criterion (AIC); this will also be followed in the replication. 
 
 
 ### Differences from Original Study
 
 Differences between the original study and the current study have been minimized, but those present are summarized below:
 
-The participant sample will differ in that it will be collected online through MTurk utilizing a Qualtrics survey, rather than in-person utilizing E-prime software. Despite this change, the experimental design of the original setup is completely replicable using the Qualtrics software. Reaction time data and emotional ratings will still be obtained as they were in the original design, and clicking (rather than typing) the emotional rating will not have any impact as reaction time during emotion rating is irrelevant to the aims of the study. One concern of note is that reaction time data is sensitive to participant distraction, and external distraction is arguably more present when a survey is completed in a participant's personal setting rather than in a laboratory. However, extended reaction times due to distraction will likely be addressed utilizing the cleaning method detailed in the analysis plan, so the impact of this difference is expected to be minimized.
+The participant sample will differ in that it will be collected online through MTurk utilizing a Qualtrics survey, rather than in-person utilizing E-prime software. Despite this change, the experimental design of the original setup is completely replicable using the Qualtrics software. Reaction time data and emotional ratings will still be obtained as they were in the original design, and clicking (rather than typing) the emotional rating will not have any impact as reaction time during emotion rating is irrelevant to the aims of the study. One concern of note is that reaction time data is sensitive to participant distraction, and external distraction is arguably more present when a survey is completed in a participant's personal setting rather than in a laboratory. However, extended reaction times due to distraction will likely be addressed utilizing the cleaning method detailed in the analysis plan, so the impact of this difference is expected to be minimized. One of these cleaning elements (exclusion of RTs above or below 2.5 standard deviations of the mean) is detailed in the original study; however, to further ensure that reaction time data was accurate, an additional filtering step was added to remove participants who had responses that were less than 400ms more than half of the time. Participants with more than 50% of trials with sub-400ms were decided as more likely to have been either botting or gamifying the study.
 
 Furthermore, the sample will be drawn from a pool of American participants, rather than British participants. As the author makes claims regarding readers in general, rather than readers in the United Kingdom alone, this should not impact the claims of the paper; however, this is recognized as a limitation. To accommodate the difference in geographic location, passage stimuli were modified to change British English spellings to American English spellings. This change was made to reduce any distraction that may have been caused by the less commonly encountered spelling; however, it does not impact the meaning of the word, nor does it change the key elements of the passage (the perspective or emotion). Therefore this difference is not expected to impact the claims made by the original paper.
 
@@ -131,7 +131,7 @@ f. 'ER' stands for emotion self-rating.
 
 *In accordance with the above notes, column titles were represented in three part annotations structured with the perspective, valence and scenario, and value indicator (for either sentence reaction time or emotion rating). One example is '2p.P1.1RT', meaning that the passage was written in second-person about the first positive scenario, and that the value logged in that column is the reaction time for the first sentence. Another example is '3pF.N5.ER', indicating that the passage was written in third-person perspective (with a female character) about the fifth negative scenario, and that the value logged in that column is the emotion rating for that passage.* 
 
-The above data preparation process is hidden code below. Data files can be found in the [data](https://github.com/psych251/child2018/tree/master/data) folder of the Github repository.
+The above data preparation process is in hidden code below. Data files can be found in the [data](https://github.com/psych251/child2018/tree/master/data) folder of the Github repository.
 
 ```{r include=F}
 ###Data Preparation
@@ -266,7 +266,7 @@ long_filtered_RT_data$ln_RT_Resid = residuals(regression_RT_data)
 
 ```
 
-Below is the code for the histogram of the log-transformed reading times, followed by Figure 1 from the original paper representing the same data. Note that "true" for perspective is second person, whereas "true" for valence is positive. 
+Below is the code for the histogram of the log-transformed reading times, followed by Figure 1 from the original paper representing the same data.
 
 ```{r}
 RT_data_graph = long_filtered_RT_data %>%
@@ -356,10 +356,9 @@ ER_T_test
 
 ### Exploratory analyses
 
-Exploratory analyses were run with regards to the main analyses of the original paper. Two linear mixed effects (LME) models were run; one for reading times, and one for emotion ratings. For both models, perspective and valence were included as fixed-effects, and participants and items were included as random intercepts. Below is the code for running these models:
+Exploratory analyses were run with regards to the main analyses of the original paper. Two linear mixed effects (LME) models were run; one for reading times, and one for emotion ratings. For both models, perspective and valence were included as fixed-effects, and participants and items were included as random intercepts. Random slopes were not included as in the original model. Below is the code for running these models:
 
 ```{r}
-##still working on this as of 11/4/20
 
 RT_model <- lmer(ln_RT_Resid ~ Perspective + Valence + Perspective*Valence + (1 + Perspective + Valence | Subject), long_filtered_RT_data)
 
@@ -369,19 +368,6 @@ ER_model <- lmer(ER ~ Perspective + Valence + Perspective*Valence + (1 + Perspec
 
 summary(ER_model)
 
-```
-
-
-The original tables are presented below as Table 1 and Table 2 from Child, Oakhill, & Garnham (2018); the reading times LME model is on the left, and the self-ratings of emotions LME model is on the right.
-
-```{r}
-knitr::include_graphics("https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Table1and2.png?raw=true")
-```
-
-Below are the tables created in the replication project; the reading times LME model is on the left, and the self-ratings of emotion LME is on the right.
-
-```{r}
-###TBD
 ```
 
 
