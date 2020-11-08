@@ -172,7 +172,8 @@ filtered_data = child2018rep_data %>%
 #### RT analysis data preparation
 
 RT_data = filtered_data %>%
-  select(-contains("ER"))
+  select(-contains("ER")) %>%
+  na.omit
 
 long_RT_data = RT_data %>% 
   pivot_longer(cols=-c("Subject", "Age"),
@@ -185,8 +186,7 @@ long_RT_data = RT_data %>%
 long_RT_data <- left_join(long_RT_data, child2018rep_charcount, by = c("Passage"))
 
 long_RT_data = long_RT_data %>%
-  select(-contains("Text")) %>%
-  na.omit(RT)
+  select(-contains("Text"))
 
 long_RT_data$Subject <- as.factor(long_RT_data$Subject)
 long_RT_data$Age <- as.numeric(long_RT_data$Age)
@@ -196,18 +196,23 @@ long_RT_data$Valence <- as.logical(long_RT_data$Valence)
 long_RT_data$Character_Count <- as.numeric(long_RT_data$Character_Count)
 
 ### RT data filtering (bot then SD)
-  
+
 long_filtered_RT_data = long_RT_data %>% 
   group_by(Subject) %>%
   mutate(trials = as.numeric(!is.na(RT)), #creates dummy=1 for completed trials
-         bot = as.numeric(RT < 0.399, na.rm=TRUE), #creates dummy=1 for suspicious trials
+         bot = as.numeric(RT < 0.400, na.rm=TRUE), #creates dummy=1 for suspicious trials
          bot_trials = sum(bot, na.rm=TRUE), #sums the total suspicious trials
          total_trials = sum(trials, na.rm=TRUE), #sums the total trials (may or may not vary)
          bot_prop = bot_trials/total_trials, #calculates proportion of suspicious/good trials
-         exclude_bot = bot_prop>.5) %>% #excludes anyone with more than 50% bad trials
-  filter(exclude_bot!=TRUE)
+         exclude_bot = bot_prop>.5) #excludes anyone with more than 50% bad trials
 
-long_filtered_RT_data %>%
+excluded_RT_participants <- long_filtered_RT_data %>%
+  filter(exclude_bot==TRUE) %>%
+  select("Subject")
+
+long_filtered_RT_data = long_filtered_RT_data %>%
+  filter(exclude_bot!=TRUE) %>% 
+  select(-c("trials", "bot", "bot_trials", "total_trials", "bot_prop", "exclude_bot")) %>%
   filter(between(RT, mean(RT, na.rm=TRUE) - (2.5 * sd(RT, na.rm=TRUE)), 
                  mean(RT, na.rm=TRUE) + (2.5 * sd(RT, na.rm=TRUE)))) 
 
@@ -223,11 +228,13 @@ long_ER_data = ER_data %>%
   mutate(Perspective = grepl("2p", Passage),
          Valence = grepl(".P", Passage))
 
-long_ER_data$Subject <- as.factor(long_ER_data$Subject)
-long_ER_data$Age <- as.numeric(long_ER_data$Age)
-long_ER_data$ER <- as.numeric(long_ER_data$ER)
-long_ER_data$Perspective <- as.logical(long_ER_data$Perspective)
-long_ER_data$Valence <- as.logical(long_ER_data$Valence)
+long_filtered_ER_data = anti_join(long_ER_data, excluded_RT_participants) #gets rid of participants filtered by RTs earlier
+
+long_filtered_ER_data$Subject <- as.factor(long_filtered_ER_data$Subject)
+long_filtered_ER_data$Age <- as.numeric(long_filtered_ER_data$Age)
+long_filtered_ER_data$ER <- as.numeric(long_filtered_ER_data$ER)
+long_filtered_ER_data$Perspective <- as.logical(long_filtered_ER_data$Perspective)
+long_filtered_ER_data$Valence <- as.logical(long_filtered_ER_data$Valence)
 
 ```
 
@@ -237,11 +244,11 @@ Prior to producing the final models, the mean and standard deviation for age nee
 
 ```{r}
 ####descriptives
-long_ER_data %>%
+long_filtered_ER_data %>%
   summarise(Mean_Age = mean(Age, na.rm = T),
             StdDev_Age = sd(Age, na.rm = T),
             Range_Age = paste(min(Age, na.rm = T), "-", max(Age, na.rm = T)),
-            n = sum(!is.na(Age)))
+            n = n_distinct(Subject))
 
 long_filtered_RT_data %>%
   group_by(Perspective, Valence) %>%
@@ -262,7 +269,7 @@ long_filtered_RT_data %>%
 
 regression_RT_data = lmer(ln_RT ~ 1 + Character_Count + (1 + Character_Count | Subject), long_filtered_RT_data)
 
-long_filtered_RT_data$ln_RT_Resid = residuals(regression_RT_data)
+long_filtered_RT_data$ln_RT_Resid <- residuals(regression_RT_data)
 
 ```
 
@@ -302,7 +309,7 @@ knitr::include_graphics("https://github.com/psych251/child2018/blob/master/origi
 Below is the code for the histogram of the emotion ratings data, followed by Figure 2 from the original paper representing the same data. Note that "true" for perspective is second-person, whereas "true" for valence is positive.
 
 ```{r}
-ER_data_graph = long_ER_data %>% 
+ER_data_graph = long_filtered_ER_data %>% 
   group_by(Perspective, Valence) %>%
   summarise(Mean_ER = mean(ER, na.rm=T),
             StdDev_ER = sd(ER, na.rm=T),
@@ -364,7 +371,7 @@ RT_model <- lmer(ln_RT_Resid ~ Perspective + Valence + Perspective*Valence + (1 
 
 summary(RT_model)
 
-ER_model <- lmer(ER ~ Perspective + Valence + Perspective*Valence + (1 + Perspective + Valence | Subject), long_ER_data)
+ER_model <- lmer(ER ~ Perspective + Valence + Perspective*Valence + (1 + Perspective + Valence | Subject), long_filtered_ER_data)
 
 summary(ER_model)
 
