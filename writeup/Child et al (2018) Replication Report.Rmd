@@ -301,7 +301,7 @@ ggplot(data = RT_data_graph,
                       labels = c("Third-person (he/she)",
                                  "Second-person (you)"))
 
-####not clear in original data what they used for error bars when plotting the residuals of the ln-RTs...
+#not clear in original data what they used for error bars when plotting the residuals of the ln-RTs...
 
 knitr::include_graphics("https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Figure1.png?raw=true")
 ```
