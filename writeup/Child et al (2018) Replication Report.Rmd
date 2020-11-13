@@ -146,7 +146,7 @@ library(lme4)
 
 ####Import data from Qualtrics and Excel (Character Count Info)
 
-child2018rep_data_link <- getURL("https://raw.githubusercontent.com/psych251/child2018/master/data/psych251_child2018_anonymized_pilotB.csv")
+child2018rep_data_link <- getURL("https://raw.githubusercontent.com/psych251/child2018/master/data/psych251_child2019_anonymized_experiment.csv")
 child2018rep_data <- read.csv(text = child2018rep_data_link)
 
 child2018rep_charcount_link <- getURL("https://raw.githubusercontent.com/psych251/child2018/master/data/Child_Oakhill_Garnham_2018_Sentence_CharacterCount.csv")
@@ -199,6 +199,7 @@ long_RT_data$Character_Count <- as.numeric(long_RT_data$Character_Count)
 
 long_filtered_RT_data = long_RT_data %>% 
   group_by(Subject) %>%
+  filter(RT!=0) %>%
   mutate(trials = as.numeric(!is.na(RT)), #creates dummy=1 for completed trials
          bot = as.numeric(RT < 0.400, na.rm=TRUE), #creates dummy=1 for suspicious trials
          bot_trials = sum(bot, na.rm=TRUE), #sums the total suspicious trials
@@ -345,7 +346,7 @@ The original value for the T-test examining the impact of perspective on reading
 
 ```{r}
 RT_T_test <- long_filtered_RT_data %>%
-  t_test(Valence ~ Perspective) %>%
+  t_test(Valence~Perspective) %>%
   add_significance()
 
 RT_T_test
