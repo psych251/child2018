@@ -146,7 +146,7 @@ library(lme4)
 
 ####Import data from Qualtrics and Excel (Character Count Info)
 
-child2018rep_data_link <- getURL("https://raw.githubusercontent.com/psych251/child2018/master/data/psych251_child2019_anonymized_experiment.csv")
+child2018rep_data_link <- getURL("https://raw.githubusercontent.com/psych251/child2018/master/data/psych251_child2018_anonymized_experiment.csv")
 child2018rep_data <- read.csv(text = child2018rep_data_link)
 
 child2018rep_charcount_link <- getURL("https://raw.githubusercontent.com/psych251/child2018/master/data/Child_Oakhill_Garnham_2018_Sentence_CharacterCount.csv")
@@ -172,8 +172,7 @@ filtered_data = child2018rep_data %>%
 #### RT analysis data preparation
 
 RT_data = filtered_data %>%
-  select(-contains("ER")) %>%
-  na.omit
+  select(-contains("ER"))
 
 long_RT_data = RT_data %>% 
   pivot_longer(cols=-c("Subject", "Age"),
@@ -226,6 +225,7 @@ long_ER_data = ER_data %>%
                names_to = 'Passage',
                values_to = 'ER') %>%
   filter(Passage!="Subject.1" & Passage!="Age.1") %>%
+  filter(ER>0) %>%
   mutate(Perspective = grepl("2p", Passage),
          Valence = grepl(".P", Passage))
 
@@ -250,6 +250,11 @@ long_filtered_ER_data %>%
             StdDev_Age = sd(Age, na.rm = T),
             Range_Age = paste(min(Age, na.rm = T), "-", max(Age, na.rm = T)),
             n = n_distinct(Subject))
+
+long_filtered_ER_data %>%
+  group_by(Perspective, Valence) %>%
+  summarise(Mean_ER = mean(ER, na.rm=T),
+            StdDev_ER = sd(ER, na.rm=T))
 
 long_filtered_RT_data %>%
   group_by(Perspective, Valence) %>%
@@ -346,17 +351,21 @@ The original value for the T-test examining the impact of perspective on reading
 
 ```{r}
 RT_T_test <- long_filtered_RT_data %>%
-  t_test(Valence~Perspective) %>%
+  ungroup() %>%
+  filter(Valence=TRUE) %>% #looking to replicate effect in positive passages
+  t_test(ln_RT_Resid~Perspective) %>%
   add_significance()
 
-RT_T_test #needs bug fix--t-test per subject??
+RT_T_test
 ```
 
 The original value for the T-test examining the impact of perspective on emotion-self rating in positive passages was t(4335)=3.67, p < .001. The current replication's T-test is reported below:
 
 ```{r}
-ER_T_test <- long_ER_data %>%
-  t_test(Valence~Perspective) %>%
+ER_T_test <- long_filtered_ER_data %>%
+  ungroup() %>%
+  filter(Valence=TRUE) %>% #looking to replicate effect in positive passages
+  t_test(ER~Perspective) %>%
   add_significance()
 
 ER_T_test
