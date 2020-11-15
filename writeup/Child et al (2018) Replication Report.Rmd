@@ -349,7 +349,7 @@ RT_T_test <- long_filtered_RT_data %>%
   t_test(Valence~Perspective) %>%
   add_significance()
 
-RT_T_test
+RT_T_test #needs bug fix--t-test per subject??
 ```
 
 The original value for the T-test examining the impact of perspective on emotion-self rating in positive passages was t(4335)=3.67, p < .001. The current replication's T-test is reported below:
