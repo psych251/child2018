@@ -16,7 +16,7 @@ output:
 
 ### Experiment Overview and Choice Justification
 
-In Experiment 1 of the manuscript "You're the emotional one: the role of perspective for emotion processing in reading comprehension", Child, Oakhill, & Garnham (2018) manipulated the perspective (personal versus onlooker) and overall valence (positive versus negative) of short text passages to investigate the potential effects on a reader's speed and emotional response. Overall, the researchers found that participants read more quickly in the personal perspective condition. Additionally, they found that in the positively valenced condition, personal perspective induced faster reading per sentence and more positive feelings after reading. In the negatively valenced condition, there were no evident effects of perspective on reading speed or emotional response. I aim to replicate these findings in the current project. 
+In Experiment 1 of the manuscript "You're the emotional one: the role of perspective for emotion processing in reading comprehension", Child, Oakhill, & Garnham (2018) manipulated the perspective (personal versus onlooker) and overall valence (positive versus negative) of short text passages to investigate the potential effects on a reader's speed and emotional response. Overall, the researchers found that participants read more quickly in the personal-perspective condition. Additionally, they found that in the positively-valenced condition, personal perspective induced faster reading per sentence and more positive feelings after reading. In the negatively-valenced condition, there were no evident effects of perspective on reading speed or emotional response. I aim to replicate these findings in the current project. 
 
 I selected this study because the influence of perspective on the reading experience is one that relates to my own future research within the science of reading, as I intend to examine processing of text and its relation to engagement and comprehension. I am particularly intrigued by the idea of text manipulation as a tool to influence reader behavior, given it may hold implications for educational practice. 
 
@@ -28,7 +28,7 @@ Following an introduction and three practice trials, participants were shown 48 
 
 ### Anticipated Challenges
 
-I believe my primary challenge will be the programming of the experiment due to the number of passage stimuli, the fact that they are presented sentence-by-sentence, and the need to collect reaction time data. I do not have previous experience with JavaScript, having primarily used tools like Qualtrics and E-prime in the past. Qualtrics does have a timing feature that could be applied to this paradigm, but I'm unsure if its sensitivity is appropriate for the current task. Furthermore, I am also new to utilizing the tidyverse for data work, and therefore expect that there will be a learning curve during my analyses. Lastly--although I hope that this will not present a challenge--I will need to obtain the 24 distractor passages described above as they are not included in the supplemental material.
+I believe my primary challenge will be the programming of the experiment due to the number of passage stimuli, the fact that they are presented sentence-by-sentence, and the need to collect reaction time data. I do not have previous experience with JavaScript, having primarily used tools like Qualtrics and E-Prime in the past. Qualtrics does have a timing feature that could be applied to this paradigm, but I'm unsure if its sensitivity is appropriate for the current task. Furthermore, I am also new to utilizing the tidyverse for data work, and therefore expect that there will be a learning curve during my analyses. Lastly--although I hope that this will not present a challenge--I will need to obtain the 24 distractor passages described above as they are not included in the supplemental material.
 
 ### Related Links
 
@@ -36,13 +36,15 @@ The GitHub project repository for this replication can be found [here.](https://
 
 The original paper being replicated can be found [here.](https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018.pdf)
 
+The OSF pre-registration for this replication project can be found [here](https://osf.io/hu79x/).
+
 <!-- This is the end of the introduction section. -->
 
 ## Methods
 
 ### Power Analysis
 
-The calculated power for the original study, utilizing the simr package, was 13% for the reading times linear mixed effects model, and 16% for the emotion self-rating linear mixed effects model. Because of low power, the key analysis of interest was revised in order to select a statistical test (the t-test, also reported in the original paper) that was more likely to be powered adequately. Using G\*Power, effect size of the original t-tests were calculated; the first t-test, on difference in the reading times of positive passages based on perspective, had an effect size of *d* = 0.11 and a power of 16%. The second t-test had an effect size of *d* = 0.13 and a power of 18%. Unfortunately, because the study will be unable to reach 80% power in either scenario without a large sample size, the planned sample size will be calculated based off of course budgetary restrictions. 
+The calculated power for the original study, utilizing the simr package, was 13% for the reading times linear mixed effects model, and 16% for the emotion self-rating linear mixed effects model. Because of low power, the key analysis of interest was revised in order to select a statistical test (the t-test, also reported in the original paper) that was more likely to be powered adequately. Using G\*Power, effect sizes of the original t-tests were calculated; the first t-test, on difference in the reading times of positive passages based on perspective, had an effect size of *d* = 0.11 and a power of 16%. The second t-test had an effect size of *d* = 0.13 and a power of 18%. Unfortunately, because the study will be unable to reach 80% power in either scenario without a large sample size, the planned sample size will be calculated based off of course budgetary restrictions. 
 
 ### Planned Sample
 
@@ -54,13 +56,13 @@ In line with the original study, the current study will aim to collect data from
 
 The original experiment utilized 48 novel passages of 5-9 sentences, counterbalanced to account for valence, perspective, and gender (in the third-person perspective passages). Each passage ended with an explicit emotion word that matched the content of the earlier sentences in each passage. These passages were provided in the [supplemental material](https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Supplemental.pdf) of the original paper. To further detail the composition of these materials, there were:
 
-a. 24 passages written in the second-person perspective (12 of which were positively-valenced and 12 of which were negatively-valenced),
-b. 12 passages written in the third-person perspective featuring a female character (6 of which were positively-valenced and 6 of which were negatively-valenced), and 
-c. 12 passages written in the third-person perspective featuring a male character (6 of which were positively-valenced and 6 of which were negatively-valenced). 
+a. 24 passages written in the second-person perspective (12 of which were positively valenced and 12 of which were negatively valenced),
+b. 12 passages written in the third-person perspective featuring a female character (6 of which were positively valenced and 6 of which were negatively valenced), and 
+c. 12 passages written in the third-person perspective featuring a male character (6 of which were positively valenced and 6 of which were negatively valenced). 
 
 It is of note that there were only 24 novel situations across passage stimuli, such that second-person and third-person perspectives were written about the same scenario but with modified language. 
 
-Additionally, participants were presented with 24 [distractor (also referred to as filler) passages](https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Supplemental_Filler.pdf) to help disguise the purpose of the experiment. Filler passages were comprised of passages of similar length as the experimental passages, and utilized a mixture of first-person and third-person perspective. Another noted difference is that "in contrast to the experimental items, the final sentence of the fillers did not contain an explicit emotion and the texts were therefore more ambiguous" (Child, Oakhill, & Garnham, 2018).
+Additionally, participants were presented with 24 [distractor (also referred to as filler) passages](https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Supplemental_Filler.pdf) to help disguise the purpose of the experiment. Filler passages were comprised of passages of similar length as the experimental passages and utilized a mixture of first-person and third-person perspective. Another noted difference is that "in contrast to the experimental items, the final sentence of the fillers did not contain an explicit emotion and the texts were therefore more ambiguous" (Child, Oakhill, & Garnham, 2018).
 
 These passages were utilized in the current replication in mostly original form, with small changes made to spelling to accommodate for linguistic differences between British English and American English. One such example is the changing of 'pay-cheque' to 'paycheck'. Documentation of these edited passages can be found [here](https://github.com/psych251/child2018/blob/master/paradigm).
 
@@ -72,14 +74,14 @@ In the original experiment,
 
 > "[a]fter an introduction and three practice trials, the main text passages were presented sentence-by-sentence. After having read the final sentence, participants typed in their self-rating i.e. the number rating their own emotion. After the response, the next trial began following a two second break" (Child, Oakhill, & Garnham, 2018). 
 
-The 48 total passages were presented in random order for every participant, with counterbalancing for perspective, valence and gender of character. Reaction time was collected on a sentence-by-sentence basis. The experiment was originally presented utilizing E-Prime software. Appearance-wise, it is of note that the text was presented on a white background with a size 24 black font. 
+The 48 total passages were presented in random order for every participant, with counterbalancing for perspective, valence, and gender of character. Reaction time was collected on a sentence-by-sentence basis. The experiment was originally presented utilizing E-Prime software. Appearance-wise, it is of note that the text was presented on a white background with a size 24 black font. 
 
 The above procedure of the original experiment was followed very closely. There were two procedural deviations: 
 
 1. The participant clicked on the number to rate their own emotion, rather than typing it in on their own keyboard, and 
 2. The experiment was implemented using Qualtrics rather than E-Prime, as previously mentioned.
 
-The completed Qualtrics paradigm is linked [here](https://stanforduniversity.qualtrics.com/jfe/form/SV_d5Op8N7nj2MYa2N). Please note that this link is to the paradigm used in Pilot B, rather than the actual implemented survey, to prevent erroneous data collection on the implemented experiment paradigm. There were no differences between this pilot and the final implemented experiment. 
+The completed Qualtrics paradigm is linked [here](https://stanforduniversity.qualtrics.com/jfe/form/SV_d5Op8N7nj2MYa2N). Please note that this link is to the paradigm used in Pilot B, rather than the actual implemented survey, to prevent erroneous data collection on the implemented experiment paradigm. There were no differences between this pilot and the final implemented experiment. A .qsf file of the experiment can also be found [here](https://github.com/psych251/child2018/blob/master/paradigm/Child2018_psych251_experimental_survey.qsf).
 
 ### Analysis Plan
 
@@ -87,36 +89,36 @@ As in the original article, reading time data will be analyzed on a sentence-by-
 
 **The revised key analysis of interest** given power constraints and as discussed with the teaching team is a replication of the t-test statistics listed in the original paper. One t-test was reported for the influence of perspective on reading times in positive passages, and one t-test was given for the impact of perspective on emotion self-rating in positive passages. Although not the main analysis of the original paper, this statistic was more likely to be reasonably powered with the course sample constraints.
 
-An exploratory analysis has been planned regarding the original analysis of interest, which was avoided due to issues with power. The original key analysis was a linear mixed effects (LME) model, repeated for reading times and then emotion ratings. For examining both outcomes of interest, perspective and valence were included as fixed-effects, with participants and items as random intercepts. In the original analysis, random slopes were not included in either model due to low scores on the Akaike information criterion (AIC); this will also be followed in the replication. 
+An exploratory analysis has been planned regarding the original analysis of interest, which was avoided due to issues with power. The original key analysis was a linear mixed effects (LME) model, repeated for reading times and then emotion ratings. For examining both outcomes of interest, perspective and valence were included as fixed effects, with participants and items as random intercepts. In the original analysis, random slopes were not included in either model due to low scores on the Akaike information criterion (AIC); this will also be followed in the exploratory analysis of this replication. 
 
 
 ### Differences from Original Study
 
 Differences between the original study and the current study have been minimized, but those present are summarized below:
 
-The participant sample will differ in that it will be collected online through MTurk utilizing a Qualtrics survey, rather than in-person utilizing E-Prime software. Despite this change, the experimental design of the original setup is completely replicable using the Qualtrics software. Reaction time data and emotional ratings will still be obtained as they were in the original design, and clicking (rather than typing) the emotional rating will not have any impact as reaction time during emotion rating is irrelevant to the aims of the study. One concern of note is that reaction time data is sensitive to participant distraction, and external distraction is arguably more present when a survey is completed in a participant's personal setting rather than in a laboratory. However, extended reaction times due to distraction will likely be addressed utilizing the cleaning method detailed in the analysis plan, so the impact of this difference is expected to be minimized. One of these cleaning elements (exclusion of RTs above or below 2.5 standard deviations of the mean) is detailed in the original study; however, to further ensure that reaction time data was accurate, an additional filtering step was added to remove participants who had responses that were less than 400ms more than half of the time. Participants with more than 50% of trials with sub-400ms were decided as more likely to have been either botting or gamifying the study.
+The participant sample will differ in that it will be collected online through MTurk utilizing a Qualtrics survey, rather than in-person utilizing E-Prime software. Despite this change, the experimental design of the original setup is completely replicable using the Qualtrics software. Reaction time data and emotional ratings will still be obtained as they were in the original design and clicking (rather than typing) the emotional rating will not have any impact as reaction time during emotion rating is irrelevant to the aims of the study. One concern of note is that reaction time data is sensitive to participant distraction, and external distraction is arguably more present when a survey is completed in a participant's personal setting rather than in a laboratory. However, extended reaction times due to distraction will likely be addressed utilizing the cleaning method detailed in the analysis plan, so the impact of this difference is expected to be minimized. One of these cleaning elements (exclusion of RTs above or below 2.5 standard deviations of the mean) is detailed in the original study; however, to further ensure that reaction time data was accurate, an additional filtering step was added to remove participants who had responses that were less than 400ms more than half of the time. Participants with more than 50% of trials with sub-400ms were decided as more likely to have been either botting or gamifying the study.
 
-Furthermore, the sample will be drawn from a pool of American participants, rather than British participants. As the author makes claims regarding readers in general, rather than readers in the United Kingdom alone, this should not impact the claims of the paper; however, this is recognized as a limitation. To accommodate the difference in geographic location, passage stimuli were modified to change British English spellings to American English spellings. This change was made to reduce any distraction that may have been caused by the less commonly encountered spelling; however, it does not impact the meaning of the word, nor does it change the key elements of the passage (the perspective or emotion). Therefore this difference is not expected to impact the claims made by the original paper.
+Furthermore, the sample will be drawn from a pool of American participants, rather than British participants. As the author makes claims regarding readers in general, rather than readers in the United Kingdom alone, this should not impact the claims of the paper; however, this is recognized as a limitation. To accommodate the difference in geographic location, passage stimuli were modified to change British English spellings to American English spellings. This change was made to reduce any distraction that may have been caused by the less commonly encountered spelling; however, it does not impact the meaning of the word, nor does it change the key elements of the passage (the perspective or emotion). Therefore, this difference is not expected to impact the claims made by the original paper.
 
-Lastly, the first author did not respond to communications and only the filler passages were able to be obtained from the senior author. Because of his, the instructions, practice trials, and wording of the emotion self-rating question were all generated anew for the current replication. Feedback was obtained during piloting to ensure that the instructions and practice trials prepared participants for the task; however, it is impossible to know whether changes in wording here or in the emotion self-rating question will impact results. Although each material has been re-created in order to best achieve its original aim, there is a possibility that the wording of the emotion self-rating question may impact response, and thus impact the replication of the second test of this paper.
+Lastly, the first author did not respond to communications and only the filler passages were able to be obtained from the senior author. Because of this, the instructions, practice trials, and wording of the emotion self-rating question were all generated anew for the current replication. Feedback was obtained during piloting to ensure that the instructions and practice trials prepared participants for the task; however, it is impossible to know whether changes in wording here or in the emotion self-rating question will impact results. Although each material has been re-created in order to best achieve its original aim, there is a possibility that the wording of the emotion self-rating question may impact response, and thus impact the replication of the second test of this paper.
 
 ### Methods Addendum (Post Data Collection)
 
 #### Actual Sample
-A total of 48 participants had their data collected via Qualtrics, using MTurk as the recruiting platform. 8 were excluded due to having reaction time data that had more than 50% of all trials less than 400ms, thought to indicate either key-smashing or botting behavior. This left the study with the target *n* of 40. Participants were all located within the United States (as sorted via MTurk's built-in geographic filter), and ranged in age from 24-70 years (*M* = 37.86, *sd* = 12). None of the participants had a diagnosed reading disorder, and all spoke English as their first language. All were compensated via MTurk for their time. 
+A total of 48 participants had their data collected via Qualtrics, using MTurk as the recruiting platform. 8 were excluded due to having reaction time data that had more than 50% of all trials less than 400ms, thought to indicate either key-smashing or botting behavior. This left the study with the target *n* of 40. Participants were all located within the United States (as sorted via MTurk's built-in geographic filter) and ranged in age from 24-70 years (*M* = 37.86, *sd* = 12). None of the participants had a diagnosed reading disorder, and all spoke English as their first language. All were compensated via MTurk for their time. 
 
-#### Differences from pre-data collection methods plan
-The only difference in the post-data collection plan was that an additional filter was created to exclude trials in which participants' reaction time was greater than 15 seconds for one sentence. This is because during the first pass of the analyses, these overly large RTs were preventing the exclusions based on +/- 2.5 standard deviations from the mean from working effectively. No other changes were made to the paradigm or data plan, although specific code was refined.
+#### Differences from Pre-Data Collection Methods Plan
+The only difference in the post-data collection plan was that an additional filter was created to exclude trials in which reaction time was greater than 15 seconds for one sentence. This is because during the first pass of the analyses, these overly large RTs were preventing the exclusions based on +/- 2.5 standard deviations from the mean from working effectively. No other changes were made to the paradigm or data plan, although specific code was refined and small corrections regarding grammar and spelling were made throughout the text of this writeup.
 
 
 ## Results
 
 
-### Data preparation
+### Data Preparation
 
-Raw data was cleaned to remove additional columns collected by Qualtrics that were unnecessary for analyses, as well as the filler passages (denoted with the "FILLER" tag in the column heading). Two additional columns were then created as data was shifted into long form; one to represent the perspective condition (second-person versus third person) and one to represent the valence condition (positive versus negative).
+Raw data was cleaned to remove additional columns collected by Qualtrics that were unnecessary for analyses, as well as the filler passages (denoted with the "FILLER" tag in the column heading). Two additional columns were then created as data was shifted into long form; one to represent the perspective condition (second person versus third person) and one to represent the valence condition (positive versus negative).
 
-For exclusions, participants with more than half of their responses equal to less than 400ms were excluded from analysis, as such a low mean indicated bot responses or 'key-smashing' responses from participants. RTs were then further excluded if they were greater than 15s per trial, indicating distraction during the individual sentence, and if they were above or below 2.5 standard deviations of the mean.
+For exclusions, participants with more than half of their responses equal to less than 400ms were excluded from analysis, as such a low mean indicated bot responses or 'key-smashing' responses from participants. Individual RTs were then further excluded if they were greater than 15s per trial, indicating distraction during the individual sentence, and if they were above or below 2.5 standard deviations of the mean.
 
 Some notes for interpreting the raw data column headings:
 
@@ -127,7 +129,7 @@ d. 'P' and 'N', followed by a number, indicate the valence and scenario number.
 e. 'RT' stands for reaction or reading time, and is preceded by a number indicating the sentence.
 f. 'ER' stands for emotion self-rating.
 
-*In accordance with the above notes, column titles were represented in three part annotations structured with the perspective, valence and scenario, and value indicator (for either sentence reaction time or emotion rating). One example is '2p.P1.1RT', meaning that the passage was written in second-person about the first positive scenario, and that the value logged in that column is the reaction time for the first sentence. Another example is '3pF.N5.ER', indicating that the passage was written in third-person perspective (with a female character) about the fifth negative scenario, and that the value logged in that column is the emotion rating for that passage.* 
+*In accordance with the above notes, column titles were represented in three-part annotations structured with the perspective, valence and scenario, and value indicator (for either sentence reaction time or emotion rating). One example is '2p.P1.1RT', meaning that the passage was written in second-person about the first positive scenario, and that the value logged in that column is the reaction time for the first sentence. Another example is '3pF.N5.ER', indicating that the passage was written in third-person perspective (with a female character) about the fifth negative scenario, and that the value logged in that column is the emotion rating for that passage.* 
 
 The above data preparation process is in hidden code below, with brief comment titles to denote exact steps. Data files can be found in the [data](https://github.com/psych251/child2018/tree/master/data) folder of the GitHub repository.
 
@@ -141,6 +143,10 @@ library(RCurl)
 library(rstatix) 
 library(lme4)
 library(sjPlot)
+library(sessioninfo)
+library(pander)
+
+options(dplyr.summarise.inform = FALSE)
 
 ####Import data from Qualtrics and Excel (Character Count Info)
 
@@ -238,12 +244,11 @@ long_filtered_ER_data$Valence <- as.logical(long_filtered_ER_data$Valence)
 
 ```
 
-### Confirmatory analysis
+### Confirmatory Analysis
 
-Below are some basic descriptives for age, *n*, emotion rating responses, and reaction times (pre-transformations). Please note that for perspective, true is equivalent to the second-person perspective and false is equivalent to the third-person perspective. For valence, true is equivalent to positive valence and false is equivalent to negative valence.
+Below are some basic descriptives for age, *n*, emotion rating responses, and reaction times (pre-transformations). Please note that for perspective, true is equivalent to the second-person perspective and false is equivalent to the third-person perspective. For valence, true indicates positive valence and false indicates negative valence.
 
 ```{r, warning = FALSE}
-####descriptives
 long_filtered_ER_data %>%
   summarise(Mean_Age = mean(Age, na.rm = T),
             StdDev_Age = sd(Age, na.rm = T),
@@ -280,9 +285,9 @@ long_filtered_RT_data$ln_RT_Resid <- residuals(regression_RT_data)
 
 ```
 
-First, the reaction time data was analyzed.
+Next, the reaction time data was graphed and analyzed.
 
-Below is the code for Figure A depicting the log-transformed reading times by valence and perspective; I chose to plot with standard error bars, although it wasn't stated in the original manuscript what the error bars represented. This histogram is followed by Figure 1 from the original paper, which depicts the same information.
+Below is the code for Figure A depicting the log-transformed reading times by valence and perspective; I chose to plot with standard error bars, although it wasn't stated in the original manuscript what the error bars represented. This figure is followed by Figure 1 from the original paper, which depicts the same variables using the data from the original paper.
 
 ```{r, warning = FALSE}
 RT_data_graph = long_filtered_RT_data %>%
@@ -313,25 +318,30 @@ ggplot(data = RT_data_graph,
 
 knitr::include_graphics("https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Figure1.png?raw=true")
 ```
+
 As specified earlier, due to power constraints the replication of an alternative primary statistic, the t-test, was explored for the key analyses of interest.
 
-The original value for the t-test examining the impact of perspective on reading time in positive passages (the data represented in Figure 1) was *t*(4408) = 3.73, *p* < .001. The code for the result of the replication's t-test (*t*(4914) = 1.86, *p* = 0.06), represented in Figure A, is reported below:
+The original value for the t-test examining the impact of perspective on reading time in positive passages was *t*(4408) = 3.73, *p* < .001. The code for the result of the replication's t-test (*t*(4914) = 1.86, *p* = 0.06) is reported below; although Cohen's *d* was not calculated in the original paper, I have also calculated it below: 
 
-```{r}
+```{r, warning = FALSE}
 RT_T_test <- long_filtered_RT_data %>%
   ungroup() %>%
-  filter(Valence=TRUE) %>% 
   t_test(ln_RT_Resid~Perspective) %>%
   add_significance()
 
 RT_T_test
+
+long_filtered_RT_data %>%
+  ungroup() %>%
+  cohens_d(ln_RT_Resid~Perspective)
+
 ```
 
 Next, the emotion rating data was examined. 
 
-Below is the code for Figure B, depicting the emotion ratings data by valence and perspective; once again, standard error was used for the error bars, but it's not explicit in the original manuscript what the error bars represented. Figure B is followed by Figure 2 from the original paper representing the same data.
+Below is the code for Figure B, depicting the emotion ratings data by valence and perspective; once again, standard error was used for the error bars, but it's not explicit in the original manuscript what the error bars represented. Figure B is followed by Figure 2 from the original paper representing the same variables in the original data.
 
-```{r}
+```{r, warning = FALSE}
 ER_data_graph = long_filtered_ER_data %>% 
   group_by(Perspective, Valence) %>%
   summarise(Mean_ER = mean(ER, na.rm=T),
@@ -363,23 +373,26 @@ ggplot(ER_data_graph,
 knitr::include_graphics("https://github.com/psych251/child2018/blob/master/original_paper/Child_Oakhill_Garnham_2018_Figure2.png?raw=true")
 ```
 
-The original value for the t-test examining the impact of perspective on emotion-self rating in positive passages was *t*(4335) = 3.67, *p* < .001 (represented in Figure 2). The code for the current replication's t-test result (*t*(934) = -0.99, *p* = 0.323), represented in Figure B, is reported below:
+The original value for the t-test examining the impact of perspective on emotion-self rating in positive passages was *t*(4335) = 3.67, *p* < .001. The code for the current replication's t-test result (*t*(934) = -0.99, *p* = 0.323) is reported below; once again I've added code for Cohen's *d*: 
 
-```{r}
+```{r, warning = FALSE}
 ER_T_test <- long_filtered_ER_data %>%
   ungroup() %>%
-  filter(Valence=TRUE) %>% 
   t_test(ER~Perspective) %>%
   add_significance()
 
 ER_T_test
+
+long_filtered_ER_data %>%
+  ungroup() %>%
+  cohens_d(ER~Perspective)
 ```
 
-### Exploratory analyses
+### Exploratory Analyses
 
-Exploratory analyses were run with regards to the original main analyses of the original paper. Two linear mixed effects (LME) models were run; one for reading times, and one for emotion ratings. For both models, perspective and valence were included as fixed-effects, and participants and items were included as random intercepts. Random slopes were not included as in the original model. Due to lack of replication in the above t-tests, I chose not to compare these models to the originals but rather to use them as a chance to explore each model as if it stood alone. Below is the code for running and summarizing these models:
+Exploratory analyses were run with regards to the original main analyses of the original paper. Two linear mixed effects (LME) models were run; one for reading times, and one for emotion ratings. For both models, perspective and valence were included as fixed effects, and participants and items were included as random intercepts. Random slopes were not included as in the original model. Due to lack of replication in the above t-tests, I chose not to compare these models to the originals but rather to use them as a chance to explore each model with relation only to the current data. Below is the code for running and summarizing these models:
 
-```{r}
+```{r, warning = FALSE}
 
 RT_model <- lmer(ln_RT_Resid ~ Perspective + Valence + Perspective*Valence + (1 + Perspective + Valence | Subject), long_filtered_RT_data)
 
@@ -390,20 +403,34 @@ tab_model(RT_model, ER_model)
 ```
 
 
+It should be noted that the warning returned regarding singular fit is likely due to the random effects of some of the included terms being estimated as zero. Because this is an exploratory analysis merely meant to try and explore the given model of the original paper, restructuring or further fitting of a new model was not done, and is also a bit beyond the scope of skills I currently possess. 
+
 ## Discussion
 
 ### Summary of Replication Attempt
 
 The first result of interest being replicated in this study was the finding that, in positive passages, second-person perspective induced faster reading time. Although the t-test did not replicate the finding, I believe that the values of the test were approaching replication, and Figure A (depicting the replication data) indicates a similar pattern to Figure 1 (depicting the original data). Therefore, although replication was not explicitly indicated by the values obtained in the t-test, I believe that this may be considered a partial replication as my results indicate a similar trend.
 
-The second result being replicated in this study was the finding that, in positive passages, emotion ratings tended to be higher after second-person perspective passages. The comparison between Figure B (showing the replication data) and Figure 2 (showing the original data) for these results suggest close similarity. However, the t-test once again did not replicate the finding. I believe that there is a key reason for this here, which can be seen in the degrees of freedom--4335 for the original test and 934 for the replication. Although there is no way to be sure without author communication, it appears that the original paper used the emotion rating responses as one-per-passage. instead of one-per-passage. Given the nature of the design, in which participants only responded once following the final sentence of the passage, I chose to run my t-test using one emotion rating per passage, which therefore gave me a lower *df* value, a significantly different t-distribution, and likely decreased my chances of replicating statistical significance. In conclusion (similarly to the first finding), although it did not replicate, I once again consider this to be a partial replication as my results indicate a general trend towards being similar to the original finding. Additional reasoning for calling this a partial replication is also explored in section (a) of the commentary. 
+The second result being replicated in this study was the finding that, in positive passages, emotion ratings tended to be higher after second-person perspective passages. The comparison between Figure B (showing the replication data) and Figure 2 (showing the original data) for these results suggest close similarity. However, the t-test once again did not replicate the finding. I believe that there is a key reason for this here, which can be seen in the degrees of freedom--4335 for the original test and 934 for the replication. Although there is no way to be sure without author communication, it appears that the original paper used the emotion rating responses as one-per-sentence instead of one-per-passage. Given the nature of the design, in which participants only responded once following the final sentence of the passage, I chose to run my t-test using one emotion rating per passage, which therefore gave me a lower *df* value with a significantly different t-distribution, and likely decreased my chances of replicating statistical significance. In conclusion (similarly to the first finding), although it did not replicate, I once again consider this to be a partial replication as my results indicate a general trend towards being similar to the original finding. Additional reasoning for calling this a partial replication is also explored in section (a) of the commentary. 
 
 ### Commentary
 
 Below are separate commentary sections, first discussing the exploratory model analyses, then discussing the replication, and lastly discussing challenges of the replication attempt:
 
-a. The exploratory LME modeling done on both the reaction time and the emotion rating data was particularly insightful. Due to my lack of power, as well as my inability to replicate in the t-tests, I chose to explore these models alone rather than compare them to the original models of the paper. As they stand, I believe they provide valuable insight into the findings of the t-test on the emotion rating data. Although the t-test didn't reach significance, the visual similarities of the data indicated by Figure B are reflected in the LME model for the emotion rating data (presented on the right of the two model summary). Of the predictors, both valence and the interaction of perspective and valence emerged as significant (*p* < .001) within the model. This suggests that the result suggested by the original authors (that second-person perspective leads to higher emotion rating in positive passages) may be present in this data, yet were not captured by the t-test. This further suggests that the difference in the *df* values of the t-tests, rather than the data itself, may have been the reason behind the lack of replicated findings.
+a. The exploratory LME modeling done on both the reaction time and the emotion rating data was particularly insightful. Due to my lack of power, as well as my inability to replicate in the t-tests, I chose to explore these models alone rather than compare them to the original models of the paper. As they stand, I believe they provide valuable insight into the current findings of the t-test on the emotion rating data. Although the t-test didn't reach significance, the visual similarities of the data indicated by Figure B are reflected in the LME model for the emotion rating data (presented on the right of the two-model summary). Of the predictors, both valence and the interaction of perspective and valence emerged as significant (*p* < .001) within the model. This suggests that the result found by the original authors (that second-person perspective leads to higher emotion rating in positive passages) may be present in this data yet were not captured by the t-test. This further suggests that the difference in the *df* values of the t-tests, rather than the data itself, may have been one of the reasons behind the lack of replicated findings. However, these models were exploratory and thus cannot provide definitive insight.
 
-b. The current replication project should be interpreted with caution, primarily because it's under-powered. To reach 80% power would have required more subjects than in the current study, so therefore the *n* was maximized under budget course constraints. Giving the trending nature of the replicated data towards the original data, it may very well be the case that a larger sample size would have greatly increased the chances of replication. Furthermore, there were also differences in the delivery of the paradigm (although the integrity of the original paradigm was maintained), such that it was delivered online via Qualtrics instead of in-person via E-Prime. There is a significant body of work suggesting that reaction time experiments online work well; therefore, although I don't believe this to be a significant cause of the lack of replication, it is plausible that it could have had a role. Changes to the instructions, practice trials, and emotion-rating question (due to inability to obtain original materials) are unlikely to have been a moderator of the result, as satisfactory checks for understanding were performed during both experimental pilots that confirmed participants understood the task and interpreted the questions as they should have (according to the manuscript descriptions). Similarly, the minor spelling edits made to the passages are unlikely to have had any impact as it didn't change either the emotion or the perspective of the passage, emotion rating data overall was quite similar, and the character count data used to regress for length effects was generated based off of the newly edited passages. Lastly, I do not believe that the different sample makeup (which was by comparison older, with a greater age range, and American) impacted the results, particularly given allusions to broader generalization of the experiment's findings to all readers in the original manuscript. Thus, given these reasons and the findings described in the above summary of the replication attempt, I believe that this replication project should be considered a tentative partial replication with encouragement for a further replication with a larger sample size. 
+b. The current replication project should be interpreted with caution, primarily because it's under-powered. To reach 80% power would have required more subjects than in the current study, so therefore the *n* was maximized under budget course constraints. Giving the trending nature of the replicated data's findings towards the original data's findings, it may very well be the case that a larger sample size would have greatly increased the chances of replication. Furthermore, there were also differences in the delivery of the paradigm (although the integrity of the original paradigm was maintained), such that it was delivered online via Qualtrics instead of in-person via E-Prime. There is a significant body of work suggesting that reaction time experiments online work well; therefore, I don't believe this to be a significant cause of the lack of replication, although it is plausible that it could have had a role. Changes to the instructions, practice trials, and emotion-rating question (due to inability to obtain original materials) are unlikely to have been a moderator of the result, as satisfactory checks for understanding were performed during both experimental pilots that confirmed participants understood the task and interpreted the questions as they should have (according to the original manuscript descriptions). Similarly, the minor spelling edits made to the passages are unlikely to have had any impact as it didn't change either the emotion or the perspective of the passage, emotion rating data overall was quite similar, and the character count data used to regress for length effects was generated based off of the newly edited passages. Lastly, I do not believe that the different sample demographics (by comparison older on average with a greater age range, and American) impacted the results, particularly given allusions to broader generalization of the experiment's findings to all readers in the original manuscript. Thus, given these reasons and the findings described in the prior summary of the replication attempt, I believe that this replication project should be considered a tentative partial replication with encouragement for a further replication with a larger sample size. 
 
-c. The most significant challenge of the replication was the absence of author communication and the inability to obtain all original materials. I was unable to reach the original paper's first author for any clarifying questions regarding the paradigm, data processing, or data analysis after repeated attempts. This was particularly challenging when I came to the realization that the data seems to have been handled in a different way than my intuition suggested (made evident in the case of the t-test regarding emotion rating). Without communication, original data, or code, I was unable to verify whether or not I was interpreting the analyses described in the paper appropriately. With communication I believe some of this difficulty may have been alleviated. However, I will also note as described in the opening section of paper that I am new to the utilization of the tidyverse in data analysis, which presented a challenge, thus it is also plausible that I have not utilized R in the same way that the original authors did. 
+c. The most significant challenge of the replication was the absence of author communication and the inability to obtain all original materials. I was unable to reach the original paper's first author for any clarifying questions regarding the paradigm, data processing, or data analysis after repeated attempts. This was particularly challenging when I came to the realization that the data seems to have been handled in a different way than my intuition suggested (made evident in the case of the t-test regarding emotion rating). Without communication, original data, or code, I was unable to verify whether or not I was interpreting the analyses described in the paper appropriately. With communication I believe some of this difficulty may have been alleviated. However, I will also note as described in the opening section of paper that I am new to the utilization of the tidyverse in data analysis, which presented a challenge; thus it is also plausible that I have not utilized R in the same way that the original authors did. 
+
+
+## Preregistration Info and Session Info
+
+Lastly, in the spirit of replicability, the session info for this replication report is below: 
+
+```{r}
+
+Child2018rep_sessioninfo <- sessionInfo()
+pander(Child2018rep_sessioninfo)
+
+```
